@@ -1,0 +1,18 @@
+<div class="row justify-content-center" *ngIf="names && names.length > 0">
+    <div class="col-auto">
+        <table class="table table-secondary table-striped w-auto mt-3">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">My Leagues</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let name of names; let i = index">
+                        <!-- <th scope="row">{{ ids[i] }}</th> -->
+                        <td><a routerLink="/league/{{ids[i]}}">{{ name }}</a></td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

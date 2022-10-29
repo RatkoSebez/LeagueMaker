@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="signup-form">
+                <form action="" class="mt-5 border p-4 bg-light shadow" [formGroup]="leagueForm" (ngSubmit)="createLeague()">
+                    <h4 class="mb-5 text-secondary">Create League</h4>
+                    <div class="row">
+                        
+                        <div class="mb-3 col-md-12">
+                            <label>leagueName</label>
+                            <input type="text" name="leagueName" class="form-control" placeholder="leagueName"
+                                formControlName="leagueName" autofocus>
+                            <span class="text-danger"
+                                *ngIf="leagueName && leagueName.invalid && leagueName.touched">Field must have name
+                                between 1 and 30 alphabet letters or numbers.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label>numberOfCompetitors</label>
+                            <input type="number" name="numberOfCompetitors" class="form-control" placeholder="numberOfCompetitors"
+                                formControlName="numberOfCompetitors" autofocus>
+                            <span class="text-danger" *ngIf="numberOfCompetitors && numberOfCompetitors.invalid && numberOfCompetitors.touched">Field must have number between 2 and 30.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label>timesEachPlaysWithEach</label>
+                            <input type="number" name="timesEachPlaysWithEach" class="form-control" placeholder="timesEachPlaysWithEach"
+                                formControlName="timesEachPlaysWithEach">
+                            <span class="text-danger" *ngIf="timesEachPlaysWithEach && timesEachPlaysWithEach.invalid && timesEachPlaysWithEach.touched">Field must have number between 1 and 8.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label>daysBetweenMatches</label>
+                            <input type="number" name="daysBetweenMatches" class="form-control" placeholder="daysBetweenMatches"
+                                formControlName="daysBetweenMatches">
+                            <span class="text-danger"
+                                *ngIf="daysBetweenMatches && daysBetweenMatches.invalid && daysBetweenMatches.touched">Field must have number between 1 and 100.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-12">
+                            <label>competitionStart</label>
+                            <input type="date" name="competitionStart" class="form-control" placeholder="competitionStart"
+                                formControlName="competitionStart">
+                            <span class="text-danger"
+                                *ngIf="competitionStart && competitionStart.invalid && competitionStart.touched">Can not be empty.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label>pointsWin</label>
+                            <input type="number" name="pointsWin" class="form-control" placeholder="pointsWin"
+                                formControlName="pointsWin" autofocus>
+                            <span class="text-danger"
+                                *ngIf="pointsWin && pointsWin.invalid && pointsWin.touched">Field must have number
+                                between 1 and 100.</span>
+                        </div>
+                        
+                        <div class="mb-3 col-md-4">
+                            <label>pointsDraw</label>
+                            <input type="number" name="pointsDraw" class="form-control" placeholder="pointsDraw"
+                                formControlName="pointsDraw">
+                            <span class="text-danger"
+                                *ngIf="pointsDraw && pointsDraw.invalid && pointsDraw.touched">Field must
+                                have number between 0 and 100.</span>
+                        </div>
+                        
+                        <div class="mb-3 col-md-4">
+                            <label>pointsLose</label>
+                            <input type="number" name="pointsLose" class="form-control" placeholder="pointsLose"
+                                formControlName="pointsLose">
+                            <span class="text-danger"
+                                *ngIf="pointsLose && pointsLose.invalid && pointsLose.touched">Field must have number
+                                between 0 and 100.</span>
+                        </div>
+
+                        <span class="text-danger">{{ errorMessage }}</span>
+
+                        <div class="col-md-12">
+                            <button class="btn btn-primary float-end" [disabled]="leagueForm.invalid">Create League</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

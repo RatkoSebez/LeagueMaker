@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="signup-form">
+                <form action="" class="mt-5 border p-4 bg-light shadow" [formGroup]="registerForm" (ngSubmit)="register()">
+                    <h4 class="mb-5 text-secondary">Create Your Account</h4>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Name</label>
+                            <input type="text" name="fname" class="form-control" placeholder="Enter Name" formControlName="name" autofocus>
+                            <span class="text-danger" *ngIf="name && name.invalid && name.touched">Name must contain only letters
+                                and must have length less then 30 characters.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label>Surname</label>
+                            <input type="text" name="Lname" class="form-control" placeholder="Enter Surame" formControlName="surname">
+                            <span class="text-danger" *ngIf="surname && surname.invalid && surname.touched">Surname must contain only letters
+                                and must have length less then 30 characters.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-12">
+                            <label>Username<span class="text-danger">*</span></label>
+                            <input type="text" name="Lname" class="form-control" placeholder="Enter Username" formControlName="username">
+                            <span class="text-danger" *ngIf="username && username.invalid && username.touched">Username must contain only letters
+                                , numbers and "_" and must have length between 3 and 20 characters.</span>
+                        </div>
+
+                        <div class="mb-3 col-md-12">
+                            <label>Email<span class="text-danger">*</span></label>
+                            <input type="text" name="email" class="form-control" placeholder="Email" formControlName="email">
+                            <span class="text-danger" *ngIf="email && email.invalid && email.touched">Email is not valid</span>
+                        </div>
+
+                        <div class="mb-3 col-md-12">
+                            <label>Password<span class="text-danger">*</span></label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                            <span class="text-danger" *ngIf="password && password.invalid && password.touched">Password must contain only letters,
+                                numbers and symbols (! @ # & ] * $) and must have length between 8 and 50 characters.</span>
+                        </div>
+
+                        <span class="text-danger">{{ errorMessage }}</span>
+
+                        <div class="col-md-12">
+                            <button class="btn btn-primary float-end" [disabled]="registerForm.invalid">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-center mt-3 text-secondary">If you have account, please <a routerLink="/login">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
