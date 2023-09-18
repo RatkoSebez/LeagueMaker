@@ -1,4 +1,4 @@
-![league maker](https://github.com/RatkoSebez/LGM-Project/blob/main/frontend/src/assets/lgmcover.jpg "LGM logo")
+![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/lgmcover.jpg "LGM logo")
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LeagueMaker/.github%2Fworkflows%2Fbuild-backend.yml)
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LeagueMaker/.github%2Fworkflows%2Ftest-backend.yml?label=tests)
