@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      platform: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+#      jdbc:
+#        lob:
+#          non_contextual_creation: true
+
+      #spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+      #spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQL95Dialect

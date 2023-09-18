@@ -1,0 +1,109 @@
+<app-form-container
+  [formGroup]="registerForm"
+  [formTitle]="'Create Your Account'"
+>
+  <div class="mb-3 col-md-6">
+    <app-input
+      [control]="$any(registerForm.controls).name"
+      [label]="'Name'"
+      [placeholder]="'name'"
+      [type]="'text'"
+      [errorMessage]="
+        'Name should contain only letters and be at most 30 characters long.'
+      "
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-6">
+    <app-input
+      [control]="$any(registerForm.controls).surname"
+      [label]="'Surname'"
+      [placeholder]="'surname'"
+      [type]="'text'"
+      [errorMessage]="
+        'Surname should contain only letters and be at most 30 characters long.'
+      "
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-6">
+    <app-input
+      [control]="$any(registerForm.controls).username"
+      [label]="'Username'"
+      [labelDanger]="'*'"
+      [placeholder]="'username'"
+      [type]="'text'"
+      [errorMessage]="
+        'Username should contain only letters, numbers, underscore (_) and it should be between 3 and 20 characters.'
+      "
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-6">
+    <app-input
+      [control]="$any(registerForm.controls).email"
+      [label]="'Email'"
+      [labelDanger]="'*'"
+      [placeholder]="'email'"
+      [type]="'text'"
+      [errorMessage]="'Please enter valid email address.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-12">
+    <app-input
+      [control]="$any(registerForm.controls).password"
+      [label]="'Password'"
+      [labelDanger]="'*'"
+      [placeholder]="'password'"
+      [type]="'password'"
+      [errorMessage]="
+        'Password should contain only letters, numbers, special characters (! @ #&) and be between 8 and 50 characters long.'
+      "
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-12">
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input bg-dark border-light"
+        type="radio"
+        id="flexRadioDefault1"
+        value="0"
+        formControlName="sex"
+      />
+      <label class="form-check-label" for="flexRadioDefault1">Male</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input bg-dark border-light"
+        type="radio"
+        id="flexRadioDefault1"
+        value="1"
+        formControlName="sex"
+      />
+      <label class="form-check-label" for="flexRadioDefault1">Female</label>
+    </div>
+    <label><span class="text-danger">*</span></label>
+    <span class="text-danger" *ngIf="sex && sex.invalid && sex.touched"
+      >Please select either value.</span
+    >
+  </div>
+
+  <span class="text-danger">{{ errorMessage }}</span>
+
+  <div class="col-md-12">
+    <app-gradient-button
+      [title]="'Register'"
+      [form]="registerForm"
+      [type]="'submit'"
+      (onClick)="register()"
+      class="float-end"
+    ></app-gradient-button>
+  </div>
+</app-form-container>
+
+<p class="text-center mt-3 text-secondary">
+  If you have an account, please <a routerLink="/login">Login</a>
+</p>

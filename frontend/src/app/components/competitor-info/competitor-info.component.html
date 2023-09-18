@@ -1,0 +1,117 @@
+<div class="row justify-content-center mt-4 h3 text-white mx-1">
+  {{ competitor.name }}
+  <!-- <div class="col-md-3">
+    <div class="card" style="border: none">
+      <div class="card-block bg-dark">
+        <h4 class="m-b-20">{{ competitor.name }}</h4>
+        <div class="row">
+          <p class="col" style="color: var(--text-blue)">
+            {{ competitor.gamesPlayed }} P
+          </p>
+          <p class="col" style="color: var(--win-color)">
+            {{ competitor.gamesWon }} W
+          </p>
+          <p class="col" style="color: var(--draw-color)">
+            {{ competitor.gamesDraw }} D
+          </p>
+          <p class="col" style="color: var(--lose-color)">
+            {{ competitor.gamesLost }} L
+          </p>
+        </div>
+        Form
+        <ng-container *ngFor="let game of competitor.last5games">
+          <span *ngIf="game == 0" style="color: var(--lose-color)">L </span>
+          <span *ngIf="game == 1" style="color: var(--draw-color)">D </span>
+          <span *ngIf="game == 2" style="color: var(--win-color)">W </span>
+        </ng-container>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-md-12 text-white">
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <div class="card bg-c-blue">
+            <div class="card-block">
+              <h6>Win percentage</h6>
+              <h2>
+                <span
+                  >{{
+                    (competitor.gamesWon / competitor.gamesPlayed) * 100
+                      | number : "1.1-2"
+                  }}%</span
+                >
+              </h2>
+              <p class="m-b-0">
+                {{ competitor.gamesWon }}/{{ competitor.gamesPlayed }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <div class="card bg-c-green">
+            <div class="card-block">
+              <h6>Draw percentage</h6>
+              <h2>
+                <span
+                  >{{
+                    (competitor.gamesDraw / competitor.gamesPlayed) * 100
+                      | number : "1.1-2"
+                  }}%</span
+                >
+              </h2>
+              <p class="m-b-0">
+                {{ competitor.gamesDraw }}/{{ competitor.gamesPlayed }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <div class="card bg-c-yellow">
+            <div class="card-block">
+              <h6>Lose percentage</h6>
+              <h2>
+                <span
+                  >{{
+                    (competitor.gamesLost / competitor.gamesPlayed) * 100
+                      | number : "1.1-2"
+                  }}%</span
+                >
+              </h2>
+              <p class="m-b-0">
+                {{ competitor.gamesLost }}/{{ competitor.gamesPlayed }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <div class="card bg-c-pink">
+            <div class="card-block">
+              <h6 class="m-b-20">Score difference</h6>
+              <h2 class="text-right">
+                <span
+                  >{{ competitor.scoreObtained }}/{{
+                    competitor.scoreConceded
+                  }}</span
+                >
+              </h2>
+              <p class="m-b-0">
+                {{
+                  competitor.scoreObtained / competitor.scoreConceded
+                    | number : "1.1-2"
+                }}
+                obtained per one conceded
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

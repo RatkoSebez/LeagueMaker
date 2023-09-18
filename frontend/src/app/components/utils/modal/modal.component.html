@@ -1,0 +1,31 @@
+<div
+  class="modal fade text-dark"
+  id="{{ modalId }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header custom-border">
+        <h5 class="modal-title" id="exampleModalLabel">{{ modalTitle }}</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <ng-content select="[body]"></ng-content>
+      </div>
+      <div class="modal-footer custom-border">
+        <app-gradient-button
+          [title]="'Close'"
+          data-bs-dismiss="modal"
+        ></app-gradient-button>
+        <ng-content select="[submitButton]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

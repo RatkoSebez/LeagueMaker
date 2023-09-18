@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+  <div class="col-auto mt-3">
+    <div class="card bg-dark">
+      <div class="card-body">
+        <p class="blue-text">
+          Round {{ currentRound }}
+          <ng-container *ngIf="matches"
+            >({{ matches[0].startTime }})</ng-container
+          >
+        </p>
+        <hr />
+        <div *ngFor="let match of matches; let i = index">
+          <app-match-component
+            [match]="match"
+            [modalId]="'modal' + i.toString()"
+          ></app-match-component>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-auto mt-3">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <div *ngFor="let round of rounds">
+          <ul class="pagination flex-wrap">
+            <li
+              class="page-item"
+              [ngClass]="{ active: currentRound === round }"
+            >
+              <a
+                class="page-link"
+                href="javascript:;"
+                (click)="getScheduleForRound(round)"
+                >{{ round }}</a
+              >
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="mb-2">
+  <label
+    >{{ label }}<span class="text-danger">{{ labelDanger }}</span></label
+  >
+  <textarea
+    class="form-control bg-dark text-white shadow-none"
+    placeholder="{{ placeholder }}"
+    [formControl]="control"
+  ></textarea>
+  <div
+    class="text-danger"
+    *ngIf="control && control.invalid && control.touched"
+  >
+    {{ errorMessage }}
+  </div>
+</div>

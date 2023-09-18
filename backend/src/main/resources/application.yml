@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: dev
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+lgm:
+  app:
+    jwtSecret: secrett
+    jwtExpirationMs: 86400000
+
+##Spring DataSource
+#spring.datasource.driverClassName=org.postgresql.Driver
+#spring.sql.init.mode=always
+#spring.sql.init.platform=postgres
+#spring.datasource.url=jdbc:postgresql://localhost:5432/lgm
+#spring.datasource.username=postgres
+#spring.datasource.password=postgres
+#
+##JPA-Hibernate
+#spring.jpa.show-sql = true
+#spring.jpa.hibernate.ddl-auto = create-drop
+##https://stackoverflow.com/questions/43905119/postgres-error-method-org-postgresql-jdbc-pgconnection-createclob-is-not-imple
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQL95Dialect
+#
+## App Properties
+#lgm.app.jwtSecret = secrett
+#lgm.app.jwtExpirationMs = 86400000
+#
+#
+#
+## because of this error
+## InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor
+#spring.jackson.serialization.fail-on-empty-beans=false
+#
+#
+
+#spring:
+#  datasource:
+#    username: postgres
+#    password: postgres
+#    url: jdbc:postgresql://localhost:5432/lgm
+#    driver-class-name: org.postgresql.Driver
+#  sql:
+#    init:
+#      mode: always
+#      platform: postgres
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create-drop
+#  jackson:
+#    serialization:
+#      fail-on-empty-beans: false
+#
+#lgm:
+#  app:
+#    jwtSecret: secrett
+#    jwtExpirationMs: 86400000

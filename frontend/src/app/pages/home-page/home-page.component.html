@@ -1,0 +1,71 @@
+<app-menu></app-menu>
+
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="fw-bold display-3 text-center">
+        Create a better competition.
+      </h1>
+      <button
+        class="btn btn-lg glow-on-hover text-white"
+        type="button"
+        (click)="scroll(target)"
+      >
+        Get started
+      </button>
+    </div>
+  </div>
+  <div class="row mt-5" #target>
+    <div class="col-6 text-justify border-right-gradient">
+      <h3>Tournament</h3>
+      <p>
+        A tournament is divided into successive rounds. The top-ranked
+        competitors in each fixture progress to the next round. As rounds
+        progress, the number of competitors and fixtures decreases. The final
+        round, usually known as the final or cup final, consists of just one
+        fixture; the winner of which is the overall champion.
+      </p>
+      <a routerLink="/tournament" *ngIf="loggedIn">
+        <app-gradient-button
+          [title]="'Create Tournament'"
+        ></app-gradient-button>
+      </a>
+      <a routerLink="/login" *ngIf="!loggedIn">
+        <app-gradient-button
+          [title]="'Create Tournament'"
+        ></app-gradient-button>
+      </a>
+    </div>
+    <div class="col-6 text-justify">
+      <h3>League</h3>
+      <p>
+        League is a competition consisting of at least three competitors. It
+        comprises a collection of competitors coming together in a scheduled
+        competition for an overall reward or prize. This formation gives a
+        suitable structure that allows competitors to rank their different skill
+        sets and degrees of performance.
+      </p>
+      <a routerLink="/league" *ngIf="loggedIn">
+        <app-gradient-button [title]="'Create League'"></app-gradient-button>
+      </a>
+      <a routerLink="/login" *ngIf="!loggedIn">
+        <app-gradient-button [title]="'Create League'"></app-gradient-button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="competitions != null">
+  <div class="row">
+    <p class="blue-text mt-3" style="text-align: left">My competitions</p>
+    <ng-container *ngFor="let competition of competitions">
+      <div class="col-md-4">
+        <app-competition-card
+          [competition]="competition"
+        ></app-competition-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<app-footer></app-footer>

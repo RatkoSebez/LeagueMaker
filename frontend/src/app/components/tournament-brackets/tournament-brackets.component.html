@@ -1,0 +1,153 @@
+<!-- https://blog.codepen.io/2018/02/16/need-make-tournament-bracket/ -->
+
+<div class="tournament" *ngIf="numberOfRounds > 0">
+  <section id="bracket">
+    <div class="container">
+      <div
+        class="split split-one"
+        *ngFor="let _ of [].constructor(numberOfRounds); let i = index"
+      >
+        <div class="round current">
+          <div class="round-details">
+            {{ rounds_strings[i + 1] }}
+            <br />
+            <span class="date">r{{ i + 1 }}</span>
+          </div>
+
+          <!-- edit score -->
+          <app-gradient-button
+            *ngIf="isAdminOfCompetition == true"
+            [title]="''"
+            (onClick)="setCurrentRound(i + 1)"
+            data-bs-toggle="modal"
+            data-bs-target="#editScore"
+            style="text-align: center"
+            ><app-edit-icon></app-edit-icon
+          ></app-gradient-button>
+
+          <!-- matches -->
+          <ul
+            class="matchup"
+            *ngFor="let match of rounds[i + 1]"
+            [ngStyle]="{
+              margin: '0',
+              'padding-top': padding_top[i + 1],
+              'padding-bottom': padding_bottom[i + 1],
+              'padding-right': '10px'
+            }"
+          >
+            <li class="team team-top">
+              <ng-container *ngIf="match.firstCompetitor != null">
+                <a
+                  routerLink="/competitor/{{ match.firstCompetitor.id }}"
+                  style="text-decoration: none"
+                  class="text-white"
+                >
+                  {{ match.firstCompetitor.name }}
+                </a>
+                <span class="score">{{ match.firstCompetitorScore }}</span>
+              </ng-container>
+            </li>
+
+            <li class="team team-bottom">
+              <ng-container *ngIf="match.secondCompetitor != null">
+                <a
+                  routerLink="/competitor/{{ match.secondCompetitor.id }}"
+                  style="text-decoration: none"
+                  class="text-white"
+                >
+                  {{ match.secondCompetitor.name }}
+                </a>
+                <span class="score">{{ match.secondCompetitorScore }}</span>
+              </ng-container>
+            </li>
+
+            <!-- <li class="team team-bottom">
+              {{
+                match.secondCompetitor != null
+                  ? match.secondCompetitor.name
+                  : ""
+              }}<span class="score">{{ match.secondCompetitorScore }}</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- import font awesome icon for trophy -->
+      <!-- <div class="champion">
+                <div class="final">
+                    <i class="fa fa-trophy"></i>
+                    <div class="round-details">championship <br /><span class="date">March 30 - Apr. 1</span></div>
+                    <ul class="matchup championship">
+                        <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                        <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    </ul>
+                </div>
+            </div> -->
+    </div>
+  </section>
+</div>
+
+<app-modal [modalTitle]="'Edit score'" [modalId]="'editScore'">
+  <div body>
+    <div *ngFor="let _ of [].constructor(numberOfRounds); let j = index">
+      <div *ngIf="j + 1 == currentRound">
+        <form [formGroup]="matchesForm">
+          <div formArrayName="{{ formArrayNames[j] }}">
+            <ng-container *ngIf="currentRound == j + 1">
+              <ng-container
+                *ngFor="let match of refMatches[j + 1].controls; let i = index"
+              >
+                <div
+                  *ngIf="
+                    i * 2 < refMatches[j + 1].controls.length &&
+                    rounds[j + 1][i] != null &&
+                    rounds[j + 1][i].firstCompetitor != null &&
+                    rounds[j + 1][i].secondCompetitor != null
+                  "
+                >
+                  <div class="row" style="display: flex; align-items: end">
+                    <div class="col">
+                      <li class="team-modal">
+                        {{ rounds[j + 1][i].firstCompetitor.name }}
+                      </li>
+                      <li class="team-modal">
+                        {{ rounds[j + 1][i].secondCompetitor.name }}
+                      </li>
+                    </div>
+                    <div class="col">
+                      <app-input
+                        [control]="$any(refMatches[j + 1].controls[i * 2])"
+                        [label]="''"
+                        [placeholder]="'score'"
+                        [type]="'number'"
+                        [errorMessage]="'todo'"
+                      ></app-input>
+                    </div>
+                    <div class="col">
+                      <app-input
+                        [control]="$any(refMatches[j + 1].controls[i * 2 + 1])"
+                        [label]="''"
+                        [placeholder]="'score'"
+                        [type]="'number'"
+                        [errorMessage]="'todo'"
+                      ></app-input>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div submitButton>
+    <app-gradient-button
+      [title]="'Submit'"
+      data-bs-dismiss="modal"
+      (onClick)="setTournamentMatchScores()"
+      [form]="matchesForm"
+    ></app-gradient-button>
+  </div>
+</app-modal>

@@ -1,0 +1,103 @@
+<div class="container-fluid py-4" style="background-color: #000">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="lc-block">
+        <div editable="rich">
+          <h1>
+            {{ competition.name }}
+            <app-gradient-button
+              *ngIf="isAdminOfCompetition == true"
+              [title]="''"
+              data-bs-toggle="modal"
+              data-bs-target="#editCompetition"
+            >
+              <app-edit-icon></app-edit-icon
+            ></app-gradient-button>
+          </h1>
+          <p class="blue-text" style="font-size: 12px">
+            {{ competition.numberOfCompetitors }} competitors
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="lc-block">
+        <div editable="rich">
+          <p class="blue-text">about</p>
+          <p style="white-space: pre-wrap; overflow: hidden">
+            {{ competition.about }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <p class="blue-text">rules</p>
+      <p style="white-space: pre-wrap; overflow: hidden">
+        {{ competition.rules }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Edit competition modal -->
+<app-modal [modalTitle]="'Edit Competition'" [modalId]="'editCompetition'">
+  <div body>
+    <form [formGroup]="competitionForm">
+      <app-input
+        [control]="$any(competitionForm.controls).name"
+        [label]="'Name'"
+        [placeholder]="'name'"
+        [type]="'text'"
+        [errorMessage]="
+          'Name should contain only letters, numbers and space, and be between 3 and 30 characters long.'
+        "
+      ></app-input>
+      <app-textarea
+        [control]="$any(competitionForm.controls).about"
+        [label]="'About'"
+        [placeholder]="'about'"
+        [errorMessage]="'About should not contain more than 1000 characters.'"
+      ></app-textarea>
+      <app-textarea
+        [control]="$any(competitionForm.controls).rules"
+        [label]="'Rules'"
+        [placeholder]="'rules'"
+        [errorMessage]="'Rules should not contain more than 1000 characters.'"
+      ></app-textarea>
+      <div formArrayName="competitorNames">
+        <ng-container
+          *ngFor="let competitorName of refCompetitorNames.controls"
+        >
+          <app-input
+            [control]="$any(competitorName)"
+            [label]="''"
+            [placeholder]="'name'"
+            [type]="'text'"
+            [errorMessage]="
+              'Name should contain only letters, numbers and space, and be between 3 and 30 characters long.'
+            "
+          ></app-input>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+  <div submitButton>
+    <ng-container *ngIf="competitionForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        data-bs-dismiss="modal"
+        (onClick)="updateCompetition()"
+        [form]="competitionForm"
+      ></app-gradient-button>
+    </ng-container>
+    <ng-container *ngIf="!competitionForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        (onClick)="updateCompetition()"
+        [form]="competitionForm"
+      ></app-gradient-button>
+    </ng-container>
+  </div>
+</app-modal>

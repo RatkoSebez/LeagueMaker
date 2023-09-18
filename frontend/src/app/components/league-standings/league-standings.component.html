@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+  <div class="col-auto">
+    <table class="table table-dark table-striped w-auto mt-3">
+      <thead>
+        <tr class="blue-text">
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">P</th>
+          <th scope="col">W</th>
+          <th scope="col">D</th>
+          <th scope="col">L</th>
+          <th scope="col">SD</th>
+          <th scope="col">Pts.</th>
+          <th scope="col">form</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competitorStandings of standings; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td data-formatter="LinkFormatter">
+            <a
+              routerLink="/competitor/{{ competitorStandings.id }}"
+              style="text-decoration: none; color: #fff"
+            >
+              {{ competitorStandings.name }}
+            </a>
+          </td>
+          <td>{{ competitorStandings.gamesPlayed }}</td>
+          <td>
+            {{ competitorStandings.gamesWon }}
+          </td>
+          <td>
+            {{ competitorStandings.gamesDraw }}
+          </td>
+          <td>
+            {{ competitorStandings.gamesLost }}
+          </td>
+          <td>
+            {{ competitorStandings.scoreObtained }}:{{
+              competitorStandings.scoreConceded
+            }}
+          </td>
+          <td>{{ competitorStandings.points }}</td>
+          <td>
+            <ng-container *ngFor="let game of competitorStandings.last5games">
+              <span *ngIf="game == 0" style="color: var(--lose-color)">L </span>
+              <span *ngIf="game == 1" style="color: var(--draw-color)">D </span>
+              <span *ngIf="game == 2" style="color: var(--win-color)">W </span>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

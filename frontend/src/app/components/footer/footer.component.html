@@ -1,0 +1,108 @@
+<!-- <div class="container d-flex flex-column min-vh-100">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ">
+        <p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
+
+        <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+    </footer>
+</div>
+ -->
+
+<!-- <footer class="text-center text-white" style="background-color: #0a0a0a">
+  <div class="container p-4">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptatem
+    quisquam sequi neque accusantium deserunt asperiores, libero nobis
+    temporibus facilis.
+  </div>
+  <div class="text-center p-3" style="background-color: rgb(0, 0, 0)">
+    © 2023
+    <a class="text-white" href="#">leaguemaker.com</a>
+  </div>
+</footer> -->
+
+<section class="bg-dark text-light">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="lc-block mb-4">
+          <img
+            class="img-fluid"
+            alt="logo"
+            src="https://cdn.livecanvas.com/media/svg/undraw-sample/undraw_connected_world_wuay.svg"
+            style="max-height: 10vh"
+          />
+        </div>
+        <div class="lc-block small">
+          <div editable="rich">
+            <p>
+              League Maker is a web application that will help you create and
+              manage leagues and tournaments. Currently there are 2 types of
+              competitions available - round robin league and single elimination
+              tournament.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 offset-lg-1">
+        <div class="lc-block mb-4">
+          <div editable="rich">
+            <h4>Get Started</h4>
+          </div>
+        </div>
+        <!-- /lc-block -->
+        <div class="lc-block small">
+          <div editable="rich">
+            <p>
+              <a routerLink="/league" *ngIf="loggedIn"> Create League </a>
+              <a routerLink="/login" *ngIf="!loggedIn"> Create League </a>
+            </p>
+            <p>
+              <a routerLink="/tournament" *ngIf="loggedIn">
+                Create tournament
+              </a>
+              <a routerLink="/login" *ngIf="!loggedIn"> Create tournament </a>
+            </p>
+          </div>
+        </div>
+        <!-- /lc-block -->
+      </div>
+      <div class="col-lg-3 offset-lg-1">
+        <div class="lc-block mb-4">
+          <div editable="rich">
+            <h4>About us</h4>
+          </div>
+        </div>
+        <!-- /lc-block -->
+        <div class="lc-block small">
+          <div editable="rich">
+            <p>Coming soon...</p>
+          </div>
+        </div>
+        <!-- /lc-block -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 small">
+        <div class="lc-block">
+          <div editable="rich">
+            <p>Copyright © leaguemaker 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

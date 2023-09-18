@@ -1,0 +1,35 @@
+name: Test Backend
+ 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: harmon758/postgresql-action@v1
+      with:
+        postgresql version: '14'
+        postgresql db: postgres
+        postgresql user: postgres
+        postgresql password: postgres
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Test
+      run: mvn clean test -f ./backend/pom.xml
+      
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

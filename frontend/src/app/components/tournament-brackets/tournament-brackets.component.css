@@ -1,0 +1,165 @@
+/* < !-- https: //blog.codepen.io/2018/02/16/need-make-tournament-bracket/ --> */
+
+#bracket {
+  /* overflow: hidden; */
+  overflow-x: scroll;
+  overflow-y: hidden;
+  /* background-color: #e1e1e1; */
+  /* background-color: #000814; */
+  /* background-color: #1F1D36;  */
+  /* background-color: rgba(135, 64, 217, 0.9); */
+  padding-top: 20px;
+  font-size: 12px;
+  padding-left: 20px;
+  padding-bottom: 25px;
+  /* padding: 40px 0; */
+}
+
+.container {
+  margin: 0;
+  display: block;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.split {
+  display: block;
+  float: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.champion {
+  /* float: left;
+    display: block;
+    width: 16%;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-self: center;
+    align-self: center;
+    margin-top: -15px;
+    text-align: center;
+    padding: 230px 0\9; */
+  padding-right: 20px;
+}
+
+.champion i {
+  text-align: center;
+  color: var(--text-white);
+  font-size: 45px;
+  padding: 10px 0;
+}
+
+.round {
+  display: block;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  min-width: 120px;
+  width: 30.8333%\9;
+}
+
+.split-one .round {
+  margin: 0 2.5% 0 0;
+}
+
+.matchup {
+  margin: 0;
+  width: 100%;
+  padding: 10px 0;
+  height: 60px;
+}
+
+.score {
+  font-size: 11px;
+  text-transform: uppercase;
+  float: right;
+  color: var(--text-blue);
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+  position: absolute;
+  right: 5px;
+}
+
+.team {
+  padding: 0 5px;
+  margin: 3px 0;
+  height: 25px;
+  line-height: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-modal {
+  padding: 0 5px;
+  margin: 3px 0;
+  height: 25px;
+  line-height: 25px;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  /* position: relative; */
+  /* box-shadow: none; */
+  /* opacity: 0.35; */
+  list-style-type: none;
+}
+
+.round-details {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 13px;
+  color: var(--text-blue);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  height: 40px;
+}
+
+.champion li,
+.round li {
+  /* background-color: #fff; */
+  box-shadow: none;
+  opacity: 0.35;
+  list-style-type: none;
+}
+
+.champion li {
+  text-align: center;
+}
+
+.current li {
+  opacity: 1;
+}
+
+.current li.team {
+  background-color: #121212;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+/* .final {
+    margin: 4.5em 0;
+} */
+
+.date {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-family: "Istok Web", sans-serif;
+  color: var(--text-green);
+}
+
+@media screen and (min-width: 981px) {
+  .round {
+    min-width: 180px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .champion {
+    padding-right: 10px;
+  }
+  #bracket {
+    padding-left: 10px;
+  }
+}

@@ -1,0 +1,38 @@
+<app-form-container [formGroup]="loginForm" [formTitle]="'Login'">
+  <div class="mb-3 col-md-12">
+    <app-input
+      [control]="$any(loginForm.controls).username"
+      [label]="'Username'"
+      [placeholder]="'username'"
+      [type]="'text'"
+      [errorMessage]="'Username can not be empty.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-12">
+    <app-input
+      [control]="$any(loginForm.controls).password"
+      [label]="'Password'"
+      [placeholder]="'password'"
+      [type]="'password'"
+      [errorMessage]="'Password can not be empty.'"
+    ></app-input>
+  </div>
+
+  <span class="text-danger">{{ errorMessage }}</span>
+
+  <div class="col-md-12">
+    <app-gradient-button
+      [title]="'Login'"
+      [form]="loginForm"
+      [type]="'submit'"
+      class="float-end"
+      (onClick)="login()"
+    ></app-gradient-button>
+  </div>
+</app-form-container>
+
+<p class="text-center mt-3 text-secondary">
+  If you do not have account, please
+  <a routerLink="/register">Register</a>
+</p>

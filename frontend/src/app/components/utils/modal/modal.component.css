@@ -1,0 +1,16 @@
+.modal-header,
+.modal-body,
+.modal-footer {
+  /* background-color: var(--background); */
+  color: var(--text-white);
+}
+
+.custom-border {
+  border-image: linear-gradient(
+      200deg,
+      var(--gradient-dark),
+      var(--gradient-light)
+    )
+    1;
+  border-width: 1px;
+}

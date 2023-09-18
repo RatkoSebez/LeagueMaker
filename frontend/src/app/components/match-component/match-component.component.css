@@ -1,0 +1,8 @@
+.team-modal {
+  padding: 0 5px;
+  margin: 3px 0;
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  list-style-type: none;
+}

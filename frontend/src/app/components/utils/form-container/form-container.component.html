@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div>
+        <form class="mt-5 p-4 bg-dark shadow" [formGroup]="formGroup">
+          <h2 class="mb-4">{{ formTitle }}</h2>
+          <div class="row">
+            <ng-content></ng-content>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

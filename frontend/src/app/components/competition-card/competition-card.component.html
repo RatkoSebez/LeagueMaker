@@ -1,0 +1,39 @@
+<a routerLink="/{{ competition.type.toLowerCase() }}/{{ competition.id }}">
+  <div class="card text-center text-bg-dark border-gradient mb-3">
+    <div class="card-header background-gradient">
+      <h5 class="card-title">{{ competition.name }}</h5>
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="card-text blue-text">About</p>
+            <p class="card-text">
+              {{
+                competition.about.length > 60
+                  ? (competition.about | slice : 0 : 60) + "..."
+                  : competition.about
+              }}
+            </p>
+          </div>
+          <div class="col">
+            <p class="card-text blue-text">Rules</p>
+            <p class="card-text">
+              {{
+                competition.rules.length > 60
+                  ? (competition.rules | slice : 0 : 60) + "..."
+                  : competition.rules
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+      {{ competition.type }}
+      <p class="card-text blue-text" style="font-size: 11px">
+        {{ competition.numberOfCompetitors }} competitors
+      </p>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,23 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <div class="row">
+    <p class="blue-text mt-3" style="text-align: center">
+      {{ competitions.length }}
+      {{ competitions.length == 1 ? "competition" : "competitions" }} found
+    </p>
+    <ng-container *ngFor="let competition of competitions">
+      <div class="col-md-4">
+        <app-competition-card
+          [competition]="competition"
+        ></app-competition-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div *ngIf="competitions != undefined && competitions.length == 0">
+  No competition found.
+</div>
+
+<app-footer></app-footer>

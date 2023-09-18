@@ -1,0 +1,39 @@
+<app-form-container
+  [formGroup]="tournamentForm"
+  [formTitle]="'Create Tournament'"
+>
+  <div class="mb-2 col-md-12">
+    <app-input
+      [control]="$any(tournamentForm.controls).tournamentName"
+      [label]="'Name'"
+      [placeholder]="'name'"
+      [type]="'text'"
+      [errorMessage]="
+        'Name should contain only letters, numbers and space, and be between 3 and 30 characters long.'
+      "
+    ></app-input>
+  </div>
+
+  <div class="mb-2 col-md-4">
+    <app-input
+      [control]="$any(tournamentForm.controls).numberOfCompetitors"
+      [label]="'Number of competitors'"
+      [placeholder]="'competitors'"
+      [type]="'number'"
+      [errorMessage]="'Please enter number between 2 and 64.'"
+    ></app-input>
+  </div>
+
+  <span class="text-danger">{{ errorMessage }}</span>
+
+  <div class="col-md-12">
+    <app-gradient-button
+      [title]="'Submit'"
+      [form]="tournamentForm"
+      [type]="'submit'"
+      (onClick)="createTournament()"
+      class="float-end"
+    ></app-gradient-button>
+  </div>
+</app-form-container>
+<br />

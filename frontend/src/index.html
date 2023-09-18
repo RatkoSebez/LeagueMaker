@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>League Maker</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+
+    :root {
+      --background: #00060e;
+      --background-gradient-dark: #00060e;
+      --background-gradient-light: #011315;
+      --text-white: rgb(200, 194, 194);
+      --gradient-dark: #2a2a72;
+      --gradient-light: #135c86;
+      --text-blue: #2c7399;
+      --text-green: #3f915f;
+      --text-error: rgb(245, 62, 62);
+      --input-field-color: #135c86;
+      --hr-color: #135c86;
+      --win-color: green;
+      --draw-color: yellow;
+      --lose-color: red;
+    }
+
+    body {
+      font-family: "Roboto Condensed", sans-serif;
+      color: var(--text-white);
+
+      margin: 0;
+      /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+      background-color: var(--background);
+      /* background-image: linear-gradient(
+        90deg,
+        var(--background-gradient-dark),
+        var(--background-gradient-light)
+      ); */
+      /* background-color: #00060eda; */
+
+      /* background-image: url("assets/global-background.jpg"); */
+    }
+
+    hr {
+      /* border: none; */
+      /* border-width: 1px; */
+      opacity: 1;
+      /* height: 1px; */
+      border-style: solid;
+      color: var(--hr-color);
+      /* border-image: linear-gradient(
+          270deg,
+          var(--gradient-dark),
+          var(--gradient-light)
+        )
+        1; */
+    }
+
+    .blue-text {
+      text-transform: uppercase;
+      color: var(--text-blue);
+      font-weight: bold;
+    }
+
+    .text-gradient {
+      background-image: linear-gradient(
+        200deg,
+        var(--gradient-dark),
+        var(--gradient-light)
+      );
+      background-clip: text;
+      color: transparent;
+    }
+
+    .background-gradient {
+      background-image: linear-gradient(
+        200deg,
+        var(--gradient-dark),
+        var(--gradient-light)
+      );
+      /* opacity: 0.4; */
+      /* background-clip: text; */
+      /* color: transparent; */
+    }
+
+    .border-gradient {
+      border-image: linear-gradient(
+          200deg,
+          var(--gradient-dark),
+          var(--gradient-light)
+        )
+        1;
+      border-width: 1px;
+      border-style: solid;
+    }
+
+    .border-right-gradient {
+      border-image: linear-gradient(
+          200deg,
+          var(--gradient-dark),
+          var(--gradient-light)
+        )
+        1;
+      border-width: 1px;
+      border-style: solid;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    .form-control.ng-touched.ng-invalid {
+      border: 1px solid var(--text-error);
+    }
+  </style>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

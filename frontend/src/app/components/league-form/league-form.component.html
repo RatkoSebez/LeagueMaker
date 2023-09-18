@@ -1,0 +1,96 @@
+<app-form-container [formGroup]="leagueForm" [formTitle]="'Create League'">
+  <div class="mb-3 col-md-12">
+    <app-input
+      [control]="$any(leagueForm.controls).leagueName"
+      [label]="'Name'"
+      [placeholder]="'name'"
+      [type]="'text'"
+      [errorMessage]="
+        'Name should contain only letters, numbers and space, and be between 3 and 30 characters long.'
+      "
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-4">
+    <app-input
+      [control]="$any(leagueForm.controls).numberOfCompetitors"
+      [label]="'Number of competitors'"
+      [placeholder]="'competitors'"
+      [type]="'number'"
+      [errorMessage]="'Please enter number between 3 and 30.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-4">
+    <app-input
+      [control]="$any(leagueForm.controls).timesEachPlaysWithEach"
+      [label]="'Times each plays with each'"
+      [placeholder]="'number'"
+      [type]="'number'"
+      [errorMessage]="'Please enter number between 1 and 6.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-4">
+    <app-input
+      [control]="$any(leagueForm.controls).daysBetweenMatches"
+      [label]="'Days between matches'"
+      [placeholder]="'days'"
+      [type]="'number'"
+      [errorMessage]="'Please enter positive number.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-12">
+    <app-input
+      [control]="$any(leagueForm.controls).competitionStart"
+      [label]="'Start of the league'"
+      [placeholder]="'start'"
+      [type]="'date'"
+      [errorMessage]="'Can not be empty.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-4">
+    <app-input
+      [control]="$any(leagueForm.controls).pointsWin"
+      [label]="'Win'"
+      [placeholder]="'points'"
+      [type]="'number'"
+      [errorMessage]="'Please enter non negative number.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-4">
+    <app-input
+      [control]="$any(leagueForm.controls).pointsDraw"
+      [label]="'Draw'"
+      [placeholder]="'points'"
+      [type]="'number'"
+      [errorMessage]="'Please enter non negative number.'"
+    ></app-input>
+  </div>
+
+  <div class="mb-3 col-md-4">
+    <app-input
+      [control]="$any(leagueForm.controls).pointsLose"
+      [label]="'Lose'"
+      [placeholder]="'points'"
+      [type]="'number'"
+      [errorMessage]="'Please enter non negative number.'"
+    ></app-input>
+  </div>
+
+  <span class="text-danger">{{ errorMessage }}</span>
+
+  <div class="col-md-12">
+    <app-gradient-button
+      [title]="'Submit'"
+      [form]="leagueForm"
+      [type]="'submit'"
+      (onClick)="createLeague()"
+      class="float-end"
+    ></app-gradient-button>
+  </div>
+</app-form-container>
+<br />

@@ -1,0 +1,97 @@
+<ul class="list-group list-group-horizontal mb-2">
+  <li class="list-group-item list-group-item-dark">
+    <div class="me-auto">
+      <div>
+        <a
+          routerLink="/competitor/{{ match.firstCompetitor.id }}"
+          style="text-decoration: none; color: #000"
+        >
+          {{ match.firstCompetitor.name }}
+        </a>
+      </div>
+      <div>
+        <a
+          routerLink="/competitor/{{ match.secondCompetitor.id }}"
+          style="text-decoration: none; color: #000"
+        >
+          {{ match.secondCompetitor.name }}
+        </a>
+      </div>
+    </div>
+    <!-- <span class="badge bg-primary rounded-pill">1</span> -->
+    <!-- <span class="badge bg-primary rounded-pill">2</span> -->
+  </li>
+  <li class="list-group-item list-group-item-dark">
+    <div>{{ match.firstCompetitorScore }}</div>
+    <div>{{ match.secondCompetitorScore }}</div>
+  </li>
+  <li
+    class="list-group-item list-group-item-dark"
+    *ngIf="isAdminOfCompetition === true"
+  >
+    <div>
+      <div>
+        <app-gradient-button
+          [title]="''"
+          class="btn-sm mb-2"
+          data-bs-toggle="modal"
+          [attr.data-bs-target]="'#' + modalId"
+        >
+          <app-edit-icon></app-edit-icon>
+        </app-gradient-button>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<app-modal [modalTitle]="'Edit score'" [modalId]="modalId">
+  <div body>
+    <form [formGroup]="setMatchScoreForm">
+      <div class="row" style="display: flex; align-items: end">
+        <div class="col">
+          <li class="team-modal">
+            {{ match.firstCompetitor.name }}
+          </li>
+          <li class="team-modal">
+            {{ match.secondCompetitor.name }}
+          </li>
+        </div>
+        <div class="col">
+          <app-input
+            [control]="$any(setMatchScoreForm.controls).firstCompetitorScore"
+            [label]="''"
+            [placeholder]="'score'"
+            [type]="'number'"
+            [errorMessage]="'Please enter non negative number.'"
+          ></app-input>
+        </div>
+        <div class="col">
+          <app-input
+            [control]="$any(setMatchScoreForm.controls).secondCompetitorScore"
+            [label]="''"
+            [placeholder]="'score'"
+            [type]="'number'"
+            [errorMessage]="'Please enter non negative number.'"
+          ></app-input>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div submitButton>
+    <ng-container *ngIf="setMatchScoreForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        data-bs-dismiss="modal"
+        (onClick)="setMatchScore()"
+        [form]="setMatchScoreForm"
+      ></app-gradient-button>
+    </ng-container>
+    <ng-container *ngIf="!setMatchScoreForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        (onClick)="setMatchScore()"
+        [form]="setMatchScoreForm"
+      ></app-gradient-button>
+    </ng-container>
+  </div>
+</app-modal>

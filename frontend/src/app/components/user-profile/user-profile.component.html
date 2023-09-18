@@ -1,0 +1,268 @@
+<section>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-style: none">
+          <div class="row g-0 bg-dark shadow">
+            <div class="col-md-4 text-center text-white border-right-gradient">
+              <img
+                [src]="imgBase64"
+                alt="Avatar"
+                class="img-fluid my-5"
+                style="width: 80px"
+              />
+              <h5>{{ user.username }}</h5>
+              <p class="bluecolor">{{ user.bio }}</p>
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>
+                  Information
+                  <app-gradient-button
+                    [title]="''"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editUser"
+                  >
+                    <app-edit-icon></app-edit-icon
+                  ></app-gradient-button>
+                </h6>
+                <hr class="mt-0 mb-4" />
+                <div class="row">
+                  <div class="col-6 mb-3">
+                    <h6>Name</h6>
+                    <p class="bluecolor">{{ user.name }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Surname</h6>
+                    <p class="bluecolor">{{ user.surname }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="bluecolor">{{ user.email }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Gender</h6>
+                    <p class="bluecolor">{{ user.sex | lowercase }}</p>
+                  </div>
+                </div>
+                <h6>Settings</h6>
+                <hr class="mt-0 mb-4" />
+                <div class="row">
+                  <div class="col-6 mb-3">
+                    <app-gradient-button
+                      [title]="'Change password'"
+                      data-bs-toggle="modal"
+                      data-bs-target="#changePassword"
+                    ></app-gradient-button>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <app-gradient-button
+                      [title]="'Change username'"
+                      data-bs-toggle="modal"
+                      data-bs-target="#changeUsername"
+                    ></app-gradient-button>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <app-gradient-button
+                      [title]="'Change email'"
+                      data-bs-toggle="modal"
+                      data-bs-target="#changeEmail"
+                    ></app-gradient-button>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <app-gradient-button
+                      [title]="'Logout'"
+                      (onClick)="logout()"
+                    ></app-gradient-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Edit user modal -->
+<app-modal [modalTitle]="'Edit user'" [modalId]="'editUser'">
+  <div body>
+    <form [formGroup]="editUserForm">
+      <app-input
+        [control]="$any(editUserForm.controls).name"
+        [label]="'Name'"
+        [placeholder]="'name'"
+        [type]="'text'"
+        [errorMessage]="
+          'Name should contain only letters and be at most 30 characters long.'
+        "
+      ></app-input>
+      <app-input
+        [control]="$any(editUserForm.controls).surname"
+        [label]="'Surname'"
+        [placeholder]="'surname'"
+        [type]="'text'"
+        [errorMessage]="
+          'Surname should contain only letters and be at most 30 characters long.'
+        "
+      ></app-input>
+      <app-input
+        [control]="$any(editUserForm.controls).bio"
+        [label]="'Bio'"
+        [placeholder]="'bio'"
+        [type]="'text'"
+        [errorMessage]="'Bio should not contain more than 500 characters.'"
+      ></app-input>
+    </form>
+  </div>
+  <div submitButton>
+    <ng-container *ngIf="editUserForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        data-bs-dismiss="modal"
+        (onClick)="editUser()"
+        [form]="editUserForm"
+      ></app-gradient-button>
+    </ng-container>
+    <ng-container *ngIf="!editUserForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        (onClick)="editUser()"
+        [form]="editUserForm"
+      ></app-gradient-button>
+    </ng-container>
+  </div>
+</app-modal>
+
+<!-- Change password modal -->
+<app-modal [modalTitle]="'Change password'" [modalId]="'changePassword'">
+  <div body>
+    <form [formGroup]="changePasswordForm">
+      <app-input
+        [control]="$any(changePasswordForm.controls).currentPassword"
+        [label]="'Password'"
+        [placeholder]="'password'"
+        [type]="'password'"
+        [errorMessage]="
+          'Password should contain only letters, numbers, special characters (! @ #&) and should have length between 8 and 50 characters.'
+        "
+      ></app-input>
+      <app-input
+        [control]="$any(changePasswordForm.controls).newPassword"
+        [label]="'New password'"
+        [placeholder]="'new password'"
+        [type]="'password'"
+        [errorMessage]="
+          'Password should contain only letters, numbers, special characters (! @ #&) and should have length between 8 and 50 characters.'
+        "
+      ></app-input>
+    </form>
+  </div>
+  <div submitButton>
+    <ng-container *ngIf="changePasswordForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        data-bs-dismiss="modal"
+        (onClick)="changePassword()"
+        [form]="changePasswordForm"
+      ></app-gradient-button>
+    </ng-container>
+    <ng-container *ngIf="!changePasswordForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        (onClick)="changePassword()"
+        [form]="changePasswordForm"
+      ></app-gradient-button>
+    </ng-container>
+  </div>
+</app-modal>
+
+<!-- Change username modal -->
+<app-modal [modalTitle]="'Change username'" [modalId]="'changeUsername'">
+  <div body>
+    <form [formGroup]="changeUsernameForm">
+      <app-input
+        [control]="$any(changeUsernameForm.controls).newUsername"
+        [label]="'Username'"
+        [placeholder]="'username'"
+        [type]="'text'"
+        [errorMessage]="
+          'Username should contain only letters, numbers, underscore (_) and it should have length between 3 and 20 characters.'
+        "
+      ></app-input>
+      <app-input
+        [control]="$any(changeUsernameForm.controls).cupassword"
+        [label]="'Password'"
+        [placeholder]="'password'"
+        [type]="'password'"
+        [errorMessage]="
+          'Password should contain only letters, numbers, special characters (! @ # &) and should have length between 8 and 50 characters.'
+        "
+      ></app-input>
+    </form>
+  </div>
+  <div submitButton>
+    <ng-container *ngIf="changeUsernameForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        data-bs-dismiss="modal"
+        (onClick)="changeUsername()"
+        [form]="changeUsernameForm"
+      ></app-gradient-button>
+    </ng-container>
+    <ng-container *ngIf="!changeUsernameForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        (onClick)="changeUsername()"
+        [form]="changeUsernameForm"
+      ></app-gradient-button>
+    </ng-container>
+  </div>
+</app-modal>
+
+<!-- Change email modal -->
+<app-modal
+  [modalTitle]="'Change email'"
+  [modalId]="'changeEmail'"
+  [form]="changeEmailForm"
+>
+  <div body>
+    <form [formGroup]="changeEmailForm">
+      <app-input
+        [control]="$any(changeEmailForm.controls).newEmail"
+        [label]="'Email'"
+        [placeholder]="'email'"
+        [type]="'text'"
+        [errorMessage]="'Please enter valid email address.'"
+      ></app-input>
+      <app-input
+        [control]="$any(changeEmailForm.controls).cepassword"
+        [label]="'Password'"
+        [placeholder]="'password'"
+        [type]="'password'"
+        [errorMessage]="
+          'Password should contain only letters, numbers, special characters (! @ # &) and should have length between 8 and 50 characters.'
+        "
+      ></app-input>
+    </form>
+  </div>
+  <div submitButton>
+    <ng-container *ngIf="changeEmailForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        data-bs-dismiss="modal"
+        (onClick)="changeEmail()"
+        [form]="changeEmailForm"
+      ></app-gradient-button>
+    </ng-container>
+    <ng-container *ngIf="!changeEmailForm.valid">
+      <app-gradient-button
+        [title]="'Submit'"
+        (onClick)="changeEmail()"
+        [form]="changeEmailForm"
+      ></app-gradient-button>
+    </ng-container>
+  </div>
+</app-modal>

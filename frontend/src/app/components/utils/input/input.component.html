@@ -1,0 +1,18 @@
+<div [ngClass]="marginBottom">
+  <label *ngIf="isForm"
+    >{{ label }}<span class="text-danger">{{ labelDanger }}</span></label
+  >
+  <input
+    type="{{ type }}"
+    class="form-control bg-dark text-white shadow-none"
+    placeholder="{{ placeholder }}"
+    [formControl]="control"
+    (change)="test()"
+  />
+  <div
+    class="text-danger"
+    *ngIf="isForm && control && control.invalid && control.touched"
+  >
+    {{ errorMessage }}
+  </div>
+</div>
