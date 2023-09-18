@@ -1,7 +1,7 @@
 ![league maker](https://github.com/RatkoSebez/LGM-Project/blob/main/frontend/src/assets/lgmcover.jpg "LGM logo")
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LGM-Project/.github%2Fworkflows%2Fbuild-backend.yml)
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LGM-Project/.github%2Fworkflows%2Ftest-backend.yml?label=tests)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LeagueMaker/.github%2Fworkflows%2Fbuild-backend.yml)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LeagueMaker/.github%2Fworkflows%2Ftest-backend.yml?label=tests)
 [![codecov](https://codecov.io/github/RatkoSebez/LeagueMaker/graph/badge.svg?token=39P53MKUV3)](https://codecov.io/github/RatkoSebez/LeagueMaker)
 
 
