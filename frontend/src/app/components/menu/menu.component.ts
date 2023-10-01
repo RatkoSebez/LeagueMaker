@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
 
   initForm() {
     this.searchForm = new FormGroup({
-      searchQuery: new FormControl('', [Validators.required]),
+      searchQuery: new FormControl('', []),
     });
   }
 
