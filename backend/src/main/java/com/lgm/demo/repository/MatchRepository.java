@@ -30,5 +30,5 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
 
     List<Match> getAllByCompetitionId(Long competitionId);
 
-    Match getMatchByCompetitionIdAndMatchNumber(Long competitionId, Integer matchNumber);
+    Match getMatchByCompetitionIdAndNodeNumber(Long competitionId, Integer nodeNumber);
 }

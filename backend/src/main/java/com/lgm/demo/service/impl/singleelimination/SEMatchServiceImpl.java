@@ -2,16 +2,12 @@ package com.lgm.demo.service.impl.singleelimination;
 
 import com.lgm.demo.model.Competitor;
 import com.lgm.demo.model.Match;
-import com.lgm.demo.model.Tournament;
 import com.lgm.demo.model.enumeration.EResult;
 import com.lgm.demo.model.dto.request.MatchScoreRequest;
 import com.lgm.demo.model.dto.response.MatchResponse;
-import com.lgm.demo.model.exceptions.CompetitionNotFoundException;
 import com.lgm.demo.model.exceptions.InvalidMatchScoreException;
 import com.lgm.demo.model.exceptions.IsNotAdminOfCompetitionException;
-import com.lgm.demo.repository.CompetitorRepository;
 import com.lgm.demo.repository.MatchRepository;
-import com.lgm.demo.repository.TournamentRepository;
 import com.lgm.demo.service.AuthService;
 import com.lgm.demo.service.CompetitorService;
 import com.lgm.demo.service.MatchService;
@@ -64,13 +60,13 @@ public class SEMatchServiceImpl implements MatchService {
         competitorService.updateCompetitors(match);
         Match ret = match;
 
-        // there is no next match after final so we finish here
-//        if(matchIsFinal(match))
-//            return MatchResponse.entityToDto(match);
+        // there is no next match after final, so we finish here
+        // if(matchIsFinal(match))
+        //    return MatchResponse.entityToDto(match);
 
         while(!matchIsFinal(match)){
-            int nextMatchNumber = match.getMatchNumber() / 2;
-            Match nextMatch = matchRepository.getMatchByCompetitionIdAndMatchNumber(match.getCompetition().getId(), nextMatchNumber);
+            int nextMatchNumber = match.getNodeNumber() / 2;
+            Match nextMatch = matchRepository.getMatchByCompetitionIdAndNodeNumber(match.getCompetition().getId(), nextMatchNumber);
             if(nextMatch.getFirstCompetitorScore() == null || nextMatch.getSecondCompetitorScore() == null){
                 setNextMatchData(match, nextMatch);
                 matchRepository.save(nextMatch);
@@ -102,9 +98,7 @@ public class SEMatchServiceImpl implements MatchService {
     private boolean matchScoreRequestIsInvalid(MatchScoreRequest request){
         if(request.getFirstCompetitorScore() == null || request.getSecondCompetitorScore() == null)
             return true;
-        if(request.getFirstCompetitorScore().equals(request.getSecondCompetitorScore()))
-            return true;
-        return false;
+        return request.getFirstCompetitorScore().equals(request.getSecondCompetitorScore());
     }
 
     private void setMatchData(MatchScoreRequest request, Match match){
@@ -118,13 +112,13 @@ public class SEMatchServiceImpl implements MatchService {
     }
 
     private boolean matchIsFinal(Match match){
-        return match.getMatchNumber() == 1;
+        return match.getNodeNumber() == 1;
     }
 
     private void setNextMatchData(Match match, Match nextMatch){
         Competitor winner = match.getResult() == EResult.FIRST_WON ? match.getFirstCompetitor() : match.getSecondCompetitor();
 
-        if(match.getMatchNumber() % 2 == 0)
+        if(match.getNodeNumber() % 2 == 0)
             nextMatch.setFirstCompetitor(winner);
         else
             nextMatch.setSecondCompetitor(winner);

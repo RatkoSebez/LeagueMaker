@@ -23,7 +23,7 @@ public class MatchResponse {
     private Integer firstCompetitorScore;
     private Integer secondCompetitorScore;
     private Long competitionId;
-    private Integer matchNumber;
+    private Integer nodeNumber;
 
 //    public static List<MatchResponse> entityToDtoList(List<Match> matches){
 //        List<MatchResponse> response = new ArrayList<>();
@@ -44,7 +44,7 @@ public class MatchResponse {
                 match.getFirstCompetitorScore(),
                 match.getSecondCompetitorScore(),
                 match.getCompetition().getId(),
-                match.getMatchNumber()
+                match.getNodeNumber()
         );
     }
 }

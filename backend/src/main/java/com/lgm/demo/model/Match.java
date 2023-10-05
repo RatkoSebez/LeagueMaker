@@ -6,7 +6,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -39,7 +38,7 @@ public class Match implements Comparable<Match>{
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "competition", referencedColumnName = "id")
     private Competition competition;
-    private Integer matchNumber;
+    private Integer nodeNumber;
 
     public Match(Competitor firstCompetitor, Competitor secondCompetitor, LocalDate startTime, LocalDate endTime, Integer round, Competition competition, Integer matchNumber) {
         this.firstCompetitor = firstCompetitor;
@@ -48,14 +47,14 @@ public class Match implements Comparable<Match>{
         this.endTime = endTime;
         this.round = round;
         this.competition = competition;
-        this.matchNumber = matchNumber;
+        this.nodeNumber = matchNumber;
     }
 
     @Override
     public int compareTo(Match o) {
-        if(this.matchNumber == null)
+        if(this.nodeNumber == null)
             return this.id.compareTo(o.id);
-        return this.matchNumber - o.matchNumber;
+        return this.nodeNumber- o.nodeNumber;
 //        if(Objects.equals(this.matchNumber, o.matchNumber))
 //            return 0;
 //        else if(this.matchNumber > o.matchNumber)

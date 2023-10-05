@@ -55,7 +55,7 @@ public class SEScheduleServiceTest {
 
             List<Match> matches = schedule.getMatches();
             for(int i=0; i<matches.size(); i++)
-                Assertions.assertThat(matches.get(i).getMatchNumber()).isEqualTo(matches.size()-i);
+                Assertions.assertThat(matches.get(i).getNodeNumber()).isEqualTo(matches.size()-i);
         }
     }
 

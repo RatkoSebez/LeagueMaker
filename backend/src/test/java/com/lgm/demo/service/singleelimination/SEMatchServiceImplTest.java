@@ -69,7 +69,7 @@ public class SEMatchServiceImplTest {
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(request.getMatchId())).thenReturn(match);
             when(matchRepository.save(match)).thenReturn(match);
-            when(matchRepository.getMatchByCompetitionIdAndMatchNumber(match.getCompetition().getId(), match.getMatchNumber())).thenReturn(nextMatch);
+            when(matchRepository.getMatchByCompetitionIdAndNodeNumber(match.getCompetition().getId(), match.getNodeNumber())).thenReturn(nextMatch);
             when(authService.isAdminOfCompetition(Mockito.any())).thenReturn(true);
             matchService.updateMatchScore(request);
 
@@ -87,7 +87,7 @@ public class SEMatchServiceImplTest {
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
             when(matchRepository.save(Mockito.any(Match.class))).thenReturn(match);
-            when(matchRepository.getMatchByCompetitionIdAndMatchNumber(null, match.getMatchNumber())).thenReturn(nextMatch);
+            when(matchRepository.getMatchByCompetitionIdAndNodeNumber(null, match.getNodeNumber())).thenReturn(nextMatch);
             doNothing().when(competitorService).updateCompetitors(match);
             when(authService.isAdminOfCompetition(Mockito.any())).thenReturn(true);
             matchService.updateMatchScore(request);
@@ -105,7 +105,7 @@ public class SEMatchServiceImplTest {
         for(MatchScoreRequest request : invalidRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
             when(matchRepository.save(Mockito.any(Match.class))).thenReturn(match);
-            when(matchRepository.getMatchByCompetitionIdAndMatchNumber(null, match.getMatchNumber())).thenReturn(nextMatch);
+            when(matchRepository.getMatchByCompetitionIdAndNodeNumber(null, match.getNodeNumber())).thenReturn(nextMatch);
 
             assertThrows(InvalidMatchScoreException.class, () -> matchService.updateMatchScore(request));
         }
@@ -120,7 +120,7 @@ public class SEMatchServiceImplTest {
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
             when(matchRepository.save(Mockito.any(Match.class))).thenReturn(match);
-            when(matchRepository.getMatchByCompetitionIdAndMatchNumber(null, match.getMatchNumber())).thenReturn(nextMatch);
+            when(matchRepository.getMatchByCompetitionIdAndNodeNumber(null, match.getNodeNumber())).thenReturn(nextMatch);
             when(authService.isAdminOfCompetition(Mockito.any())).thenReturn(true);
             matchService.updateMatchScore(request);
 
@@ -142,7 +142,7 @@ public class SEMatchServiceImplTest {
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
             when(matchRepository.save(Mockito.any(Match.class))).thenReturn(match);
-            when(matchRepository.getMatchByCompetitionIdAndMatchNumber(null, match.getMatchNumber()/2)).thenReturn(nextMatch);
+            when(matchRepository.getMatchByCompetitionIdAndNodeNumber(null, match.getNodeNumber()/2)).thenReturn(nextMatch);
             when(authService.isAdminOfCompetition(Mockito.any())).thenReturn(true);
             matchService.updateMatchScore(request);
 

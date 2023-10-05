@@ -97,6 +97,6 @@ public class SETournamentServiceImplTest {
         List<MatchResponse> responses = tournamentService.getTournamentMatches(tournamentId);
 
         for(int i=1; i<responses.size(); i++)
-            Assertions.assertThat(responses.get(i).getMatchNumber()).isGreaterThan(responses.get(i-1).getMatchNumber());
+            Assertions.assertThat(responses.get(i).getNodeNumber()).isGreaterThan(responses.get(i-1).getNodeNumber());
     }
 }
