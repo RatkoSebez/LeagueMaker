@@ -37,34 +37,31 @@ public class SEScheduleServiceImpl implements ScheduleService{
         }
 
         int round = numberOfMatchesInExtraRound > 0 ? 2 : 1;
-        int i = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds()-1) : 0;
+        int index = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds()-1) : 0;
+
+        int times = numberOfMatchesInExtraRound/2;
+        index += times;
+        numberOfMatchesInExtraRound -= 2*times;
 
         while(!competitors.isEmpty()){
-            Competitor firstCompetitor;
+            Competitor firstCompetitor = competitors.remove(0);
             Competitor secondCompetitor = null;
 
-            if(numberOfMatchesInExtraRound >= 2){
-                numberOfMatchesInExtraRound -= 2;
-                i++;
-                continue;
-            }
-            else if(numberOfMatchesInExtraRound == 0){
+            if(numberOfMatchesInExtraRound == 0){
                 secondCompetitor = competitors.remove(0);
                 competitors2.add(secondCompetitor);
             }
             else if(numberOfMatchesInExtraRound == 1){
-                numberOfMatchesInExtraRound--;
+                numberOfMatchesInExtraRound = 0;
             }
-            firstCompetitor = competitors.remove(0);
             competitors2.add(firstCompetitor);
-            matches.get(i).setFirstCompetitor(firstCompetitor);
-            matches.get(i).setSecondCompetitor(secondCompetitor);
-            i++;
+            matches.get(index).setFirstCompetitor(firstCompetitor);
+            matches.get(index).setSecondCompetitor(secondCompetitor);
+            index++;
         }
 
         tournament.setCompetitors(competitors2);
-        Schedule schedule = Schedule.builder().competitionId(tournament.getId()).matches(matches).build();
-        return schedule;
+        return Schedule.builder().competitionId(tournament.getId()).matches(matches).build();
     }
 
     private boolean isPowerOfTwo(int n){
