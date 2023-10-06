@@ -63,8 +63,8 @@ public class SEMatchServiceImplTest {
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)
     public void SetMatchScore_MatchScoreIsSet(){
-        Match match = Match.builder().id(1L).matchNumber(1).competition(new Competition()).build();
-        Match nextMatch = Match.builder().id(2L).matchNumber(3).competition(new Competition()).build();
+        Match match = Match.builder().id(1L).nodeNumber(1).competition(new Competition()).build();
+        Match nextMatch = Match.builder().id(2L).nodeNumber(3).competition(new Competition()).build();
 
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(request.getMatchId())).thenReturn(match);
@@ -81,8 +81,8 @@ public class SEMatchServiceImplTest {
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)
     public void SetMatchScore_MatchIsFinished(){
-        Match match = Match.builder().id(1L).matchNumber(1).competition(new Competition()).build();
-        Match nextMatch = Match.builder().id(2L).matchNumber(3).competition(new Competition()).build();
+        Match match = Match.builder().id(1L).nodeNumber(1).competition(new Competition()).build();
+        Match nextMatch = Match.builder().id(2L).nodeNumber(3).competition(new Competition()).build();
 
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
@@ -99,8 +99,8 @@ public class SEMatchServiceImplTest {
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)
     public void SetMatchScore_ShouldReturnNullWhenRequestIsInvalid(){
-        Match match = Match.builder().id(1L).matchNumber(1).competition(new Competition()).build();
-        Match nextMatch = Match.builder().id(2L).matchNumber(3).competition(new Competition()).build();
+        Match match = Match.builder().id(1L).nodeNumber(1).competition(new Competition()).build();
+        Match nextMatch = Match.builder().id(2L).nodeNumber(3).competition(new Competition()).build();
 
         for(MatchScoreRequest request : invalidRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
@@ -114,8 +114,8 @@ public class SEMatchServiceImplTest {
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)
     public void SetMatchScore_MatchResultIsGood(){
-        Match match = Match.builder().id(1L).matchNumber(1).competition(new Competition()).build();
-        Match nextMatch = Match.builder().id(2L).matchNumber(3).competition(new Competition()).build();
+        Match match = Match.builder().id(1L).nodeNumber(1).competition(new Competition()).build();
+        Match nextMatch = Match.builder().id(2L).nodeNumber(3).competition(new Competition()).build();
 
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);
@@ -134,10 +134,10 @@ public class SEMatchServiceImplTest {
     @Test
     @MockitoSettings(strictness = Strictness.LENIENT)
     public void SetMatchScore_NextMatchCompetitorIdIsNotNull(){
-        Match match = Match.builder().id(1L).matchNumber(2).firstCompetitor(new Competitor(4L, "name1", 0, 0, 0, 0, 0, 0, 0, null))
+        Match match = Match.builder().id(1L).nodeNumber(2).firstCompetitor(new Competitor(4L, "name1", 0, 0, 0, 0, 0, 0, 0, null))
                 .secondCompetitor(new Competitor(5L, "name2", 0, 0, 0, 0, 0, 0, 0, null))
                 .competition(new Competition()).build();
-        Match nextMatch = Match.builder().id(2L).matchNumber(3).competition(new Competition()).build();
+        Match nextMatch = Match.builder().id(2L).nodeNumber(3).competition(new Competition()).build();
 
         for(MatchScoreRequest request : validRequests) {
             when(matchRepository.getById(Mockito.anyLong())).thenReturn(match);

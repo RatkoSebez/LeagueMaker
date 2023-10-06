@@ -19,6 +19,7 @@ public class SEScheduleServiceImpl implements ScheduleService{
         List<Competitor> competitors = tournament.getCompetitors();
         // example: there may be 9 competitors, so in order to make a full round we need first to eliminate 1 competitor
         // which is 9 - 8 = 1 by formula, only first round may not be full
+        // todo rename, mozda na first round?
         int numberOfMatchesInExtraRound = getNumberOfMatchesInExtraRound(competitors.size(), tournament.getNumberOfRounds());
         // matches are forming binary tree structure, using nodeNumber attribute
         List<Match> matches = createEmptyMatches(tournament);

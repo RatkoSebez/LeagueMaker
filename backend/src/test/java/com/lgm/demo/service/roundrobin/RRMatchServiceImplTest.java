@@ -52,7 +52,7 @@ public class RRMatchServiceImplTest {
     @Test
     public void SetMatchScore_MatchScoreIsSet(){
         for(MatchScoreRequest request : requests) {
-            Match match = Match.builder().id(1L).matchNumber(1).build();
+            Match match = Match.builder().id(1L).nodeNumber(1).build();
             when(matchRepository.getById(request.getMatchId())).thenReturn(match);
             when(matchRepository.save(match)).thenReturn(match);
 
@@ -67,7 +67,7 @@ public class RRMatchServiceImplTest {
     @Test
     public void SetMatchScore_MatchIsFinished(){
         for(MatchScoreRequest request : requests) {
-            Match match = Match.builder().id(1L).matchNumber(1).build();
+            Match match = Match.builder().id(1L).nodeNumber(1).build();
             when(matchRepository.getById(request.getMatchId())).thenReturn(match);
             when(matchRepository.save(match)).thenReturn(match);
 
@@ -81,7 +81,7 @@ public class RRMatchServiceImplTest {
     @Test
     public void SetMatchScore_MatchResultIsSet(){
         for(MatchScoreRequest request : requests) {
-            Match match = Match.builder().id(1L).matchNumber(1).build();
+            Match match = Match.builder().id(1L).nodeNumber(1).build();
             when(matchRepository.getById(request.getMatchId())).thenReturn(match);
             when(matchRepository.save(match)).thenReturn(match);
 
@@ -98,15 +98,15 @@ public class RRMatchServiceImplTest {
         MatchScoreRequest request2 = new MatchScoreRequest(1L, 1, 2);
         MatchScoreRequest request3 = new MatchScoreRequest(1L, 1, 1);
 
-        Match match1 = Match.builder().id(1L).matchNumber(1).build();
+        Match match1 = Match.builder().id(1L).nodeNumber(1).build();
         when(matchRepository.getById(request1.getMatchId())).thenReturn(match1);
         matchService.updateMatchScore(request1);
 
-        Match match2 = Match.builder().id(1L).matchNumber(1).build();
+        Match match2 = Match.builder().id(1L).nodeNumber(1).build();
         when(matchRepository.getById(request2.getMatchId())).thenReturn(match2);
         matchService.updateMatchScore(request2);
 
-        Match match3 = Match.builder().id(1L).matchNumber(1).build();
+        Match match3 = Match.builder().id(1L).nodeNumber(1).build();
         when(matchRepository.getById(request3.getMatchId())).thenReturn(match3);
         matchService.updateMatchScore(request3);
 

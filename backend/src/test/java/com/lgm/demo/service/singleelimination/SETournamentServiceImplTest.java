@@ -72,9 +72,9 @@ public class SETournamentServiceImplTest {
     @Test
     public void GetTournamentMatches_MatchResponsesAreReturned(){
         List<Match> matches = new ArrayList<>();
-        matches.add(Match.builder().matchNumber(1).competition(new Competition()).build());
-        matches.add(Match.builder().matchNumber(2).competition(new Competition()).build());
-        matches.add(Match.builder().matchNumber(3).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(1).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(2).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(3).competition(new Competition()).build());
         Long tournamentId = 1L;
         when(matchRepository.getAllByCompetitionId(tournamentId)).thenReturn(matches);
 
@@ -86,10 +86,10 @@ public class SETournamentServiceImplTest {
     @Test
     public void GetTournamentMatches_MatchResponsesAreReturnedInSortedOrder(){
         List<Match> matches = new ArrayList<>();
-        matches.add(Match.builder().matchNumber(3).competition(new Competition()).build());
-        matches.add(Match.builder().matchNumber(2).competition(new Competition()).build());
-        matches.add(Match.builder().matchNumber(1).competition(new Competition()).build());
-        matches.add(Match.builder().matchNumber(5).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(3).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(2).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(1).competition(new Competition()).build());
+        matches.add(Match.builder().nodeNumber(5).competition(new Competition()).build());
         Long tournamentId = 1L;
         when(matchRepository.getAllByCompetitionId(tournamentId)).thenReturn(matches);
 
