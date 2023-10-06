@@ -17,51 +17,30 @@ public class SEScheduleServiceImpl implements ScheduleService{
     public Schedule createSchedule(Competition competition){
         Tournament tournament = (Tournament)competition;
         List<Competitor> competitors = tournament.getCompetitors();
-        // example: there may be 9 competitors, so in order to make a full round we need first to eliminate 1 competitor
-        // which is 9 - 8 = 1 by formula, only first round may not be full
-        // todo rename, mozda na first round?
         int numberOfMatchesInExtraRound = getNumberOfMatchesInExtraRound(competitors.size(), tournament.getNumberOfRounds());
-        // matches are forming binary tree structure, using nodeNumber attribute
         List<Match> matches = createEmptyMatches(tournament);
-
-        // since I am modifying competitors, I use this list to save that data and set it again to tournament
-        List<Competitor> competitors2 = new ArrayList<>();
+        int competitorIndex = 0;
 
         Collections.shuffle(competitors);
         for(int i = 0; i < numberOfMatchesInExtraRound; i++){
-            Competitor firstCompetitor = competitors.remove(0);
-            Competitor secondCompetitor = competitors.remove(0);
-            competitors2.add(firstCompetitor);
-            competitors2.add(secondCompetitor);
-            matches.get(i).setFirstCompetitor(firstCompetitor);
-            matches.get(i).setSecondCompetitor(secondCompetitor);
+            matches.get(i).setFirstCompetitor(competitors.get(competitorIndex++));
+            matches.get(i).setSecondCompetitor(competitors.get(competitorIndex++));
         }
 
         int round = numberOfMatchesInExtraRound > 0 ? 2 : 1;
-        int index = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds()-1) : 0;
+        int matchIndex = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds()-1) : 0;
 
         int times = numberOfMatchesInExtraRound/2;
-        index += times;
+        matchIndex += times;
         numberOfMatchesInExtraRound -= 2*times;
 
-        while(!competitors.isEmpty()){
-            Competitor firstCompetitor = competitors.remove(0);
-            Competitor secondCompetitor = null;
-
-            if(numberOfMatchesInExtraRound == 0){
-                secondCompetitor = competitors.remove(0);
-                competitors2.add(secondCompetitor);
-            }
-            else if(numberOfMatchesInExtraRound == 1){
-                numberOfMatchesInExtraRound = 0;
-            }
-            competitors2.add(firstCompetitor);
-            matches.get(index).setFirstCompetitor(firstCompetitor);
-            matches.get(index).setSecondCompetitor(secondCompetitor);
-            index++;
+        while(competitorIndex < competitors.size()){
+            Competitor secondCompetitor = numberOfMatchesInExtraRound == 0 ? competitors.get(competitorIndex++) : null;
+            if(numberOfMatchesInExtraRound == 1) numberOfMatchesInExtraRound = 0;
+            matches.get(matchIndex).setFirstCompetitor(competitors.get(competitorIndex++));
+            matches.get(matchIndex++).setSecondCompetitor(secondCompetitor);
         }
 
-        tournament.setCompetitors(competitors2);
         return Schedule.builder().competitionId(tournament.getId()).matches(matches).build();
     }
 

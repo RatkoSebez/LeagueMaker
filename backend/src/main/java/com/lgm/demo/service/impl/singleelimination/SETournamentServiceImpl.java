@@ -17,7 +17,7 @@ import java.util.*;
 
 @Service
 @Qualifier("se")
-public class SETournamentServiceImpl implements TournamentService {
+public class SETournamentServiceImpl implements TournamentService{
     private final CompetitionRepository competitionRepository;
     private final CompetitorService competitorService;
     private final ScheduleService scheduleService;
@@ -30,7 +30,7 @@ public class SETournamentServiceImpl implements TournamentService {
                                    @Qualifier("se") ScheduleService scheduleService,
                                    AuthService authService,
                                    UserRepository userRepository,
-                                   MatchRepository matchRepository) {
+                                   MatchRepository matchRepository){
         this.competitionRepository = competitionRepository;
         this.competitorService = competitorService;
         this.scheduleService = scheduleService;
@@ -40,8 +40,8 @@ public class SETournamentServiceImpl implements TournamentService {
     }
 
     @Override
-    public Tournament createTournament(TournamentRequest request) {
-        int numberOfRounds = (int) Math.ceil(Math.log(request.getNumberOfCompetitors()) / Math.log(2));
+    public Tournament createTournament(TournamentRequest request){
+        int numberOfRounds = (int)Math.ceil(Math.log(request.getNumberOfCompetitors())/Math.log(2));
 
         Tournament tournament = new Tournament(
                 null,
@@ -69,7 +69,7 @@ public class SETournamentServiceImpl implements TournamentService {
     }
 
     @Override
-    public List<MatchResponse> getTournamentMatches(Long tournamentId) {
+    public List<MatchResponse> getTournamentMatches(Long tournamentId){
         // hold matches that are sorted by match number (from first to last)
         List<Match> matches = matchRepository.getAllByCompetitionId(tournamentId);
         Collections.sort(matches);

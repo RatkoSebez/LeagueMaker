@@ -51,18 +51,18 @@
       <form class="d-flex" *ngIf="!loggedIn">
         <!-- search field is on 2 places, don't change only one -->
         <div class="container-fluid">
-          <form class="d-flex" [formGroup]="searchForm">
+          <form class="d-flex" [formGroup]="searchForm" (keyup.enter)="search()">
             <app-input
               [control]="$any(searchForm.controls).searchQuery"
               [placeholder]="'search...'"
               [marginBottom]="'mb-0'"
               [isForm]="false"
             ></app-input>
-            <app-gradient-button
+            <!-- <app-gradient-button
               [title]="'Search'"
               (onClick)="search()"
               [form]="searchForm"
-            ></app-gradient-button>
+            ></app-gradient-button> -->
           </form>
         </div>
         <a routerLink="/login" class="me-2">
@@ -76,18 +76,18 @@
       <form class="d-flex" *ngIf="loggedIn">
         <!-- search field is on 2 places, don't change only one -->
         <div class="container-fluid">
-          <form class="d-flex" [formGroup]="searchForm">
+          <form class="d-flex" [formGroup]="searchForm" (keyup.enter)="search()">
             <app-input
               [control]="$any(searchForm.controls).searchQuery"
               [placeholder]="'search...'"
               [marginBottom]="'mb-0'"
               [isForm]="false"
             ></app-input>
-            <app-gradient-button
+            <!-- <app-gradient-button
               [title]="'Search'"
               (onClick)="search()"
               [form]="searchForm"
-            ></app-gradient-button>
+            ></app-gradient-button> -->
           </form>
         </div>
         <a routerLink="/profile" class="me-2">
