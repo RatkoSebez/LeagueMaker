@@ -1,6 +1,6 @@
 package com.lgm.demo.model.dto.request;
 
-import com.lgm.demo.model.validation.annotation.CustomPasswordValidator;
+import com.lgm.demo.validation.annotation.CustomPasswordValidator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

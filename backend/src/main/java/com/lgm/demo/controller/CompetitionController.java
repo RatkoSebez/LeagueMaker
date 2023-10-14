@@ -4,7 +4,7 @@ import com.lgm.demo.model.dto.request.CompetitorRequest;
 import com.lgm.demo.model.dto.request.UpdateCompetitionRequest;
 import com.lgm.demo.model.dto.response.CompetitionResponse;
 import com.lgm.demo.model.dto.response.CompetitorResponse;
-import com.lgm.demo.model.validation.ValidList;
+import com.lgm.demo.validation.ValidList;
 import com.lgm.demo.service.CompetitionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

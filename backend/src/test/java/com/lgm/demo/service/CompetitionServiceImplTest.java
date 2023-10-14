@@ -4,7 +4,7 @@ import com.lgm.demo.model.Competition;
 import com.lgm.demo.model.League;
 import com.lgm.demo.model.Tournament;
 import com.lgm.demo.model.dto.response.CompetitionResponse;
-import com.lgm.demo.model.exceptions.CompetitionNotFoundException;
+import com.lgm.demo.exception.CompetitionNotFoundException;
 import com.lgm.demo.repository.CompetitionRepository;
 import com.lgm.demo.service.impl.CompetitionServiceImpl;
 import org.junit.jupiter.api.Test;

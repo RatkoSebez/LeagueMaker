@@ -5,7 +5,7 @@ import com.lgm.demo.model.Competitor;
 import com.lgm.demo.model.Match;
 import com.lgm.demo.model.dto.request.MatchScoreRequest;
 import com.lgm.demo.model.enumeration.EResult;
-import com.lgm.demo.model.exceptions.InvalidMatchScoreException;
+import com.lgm.demo.exception.InvalidMatchScoreException;
 import com.lgm.demo.repository.MatchRepository;
 import com.lgm.demo.service.AuthService;
 import com.lgm.demo.service.impl.CompetitorServiceImpl;

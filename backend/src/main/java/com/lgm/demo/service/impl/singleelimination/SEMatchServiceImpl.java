@@ -5,8 +5,8 @@ import com.lgm.demo.model.Match;
 import com.lgm.demo.model.enumeration.EResult;
 import com.lgm.demo.model.dto.request.MatchScoreRequest;
 import com.lgm.demo.model.dto.response.MatchResponse;
-import com.lgm.demo.model.exceptions.InvalidMatchScoreException;
-import com.lgm.demo.model.exceptions.IsNotAdminOfCompetitionException;
+import com.lgm.demo.exception.InvalidMatchScoreException;
+import com.lgm.demo.exception.IsNotAdminOfCompetitionException;
 import com.lgm.demo.repository.MatchRepository;
 import com.lgm.demo.service.AuthService;
 import com.lgm.demo.service.CompetitorService;
@@ -60,14 +60,12 @@ public class SEMatchServiceImpl implements MatchService {
         competitorService.updateCompetitors(match);
         Match ret = match;
 
-        // there is no next match after final, so we finish here
-        // if(matchIsFinal(match))
-        //    return MatchResponse.entityToDto(match);
-
         while(!matchIsFinal(match)){
             int nextMatchNumber = match.getNodeNumber() / 2;
-            Match nextMatch = matchRepository.getMatchByCompetitionIdAndNodeNumber(match.getCompetition().getId(), nextMatchNumber);
-            if(nextMatch.getFirstCompetitorScore() == null || nextMatch.getSecondCompetitorScore() == null){
+            Match nextMatch = matchRepository.getMatchByCompetitionIdAndNodeNumber(
+                    match.getCompetition().getId(), nextMatchNumber);
+            if(nextMatch.getFirstCompetitorScore() == null
+                    || nextMatch.getSecondCompetitorScore() == null){
                 setNextMatchData(match, nextMatch);
                 matchRepository.save(nextMatch);
                 break;

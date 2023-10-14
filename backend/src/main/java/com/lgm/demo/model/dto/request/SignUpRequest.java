@@ -1,9 +1,9 @@
 package com.lgm.demo.model.dto.request;
 
 import com.lgm.demo.model.enumeration.ESex;
-import com.lgm.demo.model.validation.annotation.CustomNameValidator;
-import com.lgm.demo.model.validation.annotation.CustomPasswordValidator;
-import com.lgm.demo.model.validation.annotation.CustomUsernameValidator;
+import com.lgm.demo.validation.annotation.CustomNameValidator;
+import com.lgm.demo.validation.annotation.CustomPasswordValidator;
+import com.lgm.demo.validation.annotation.CustomUsernameValidator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

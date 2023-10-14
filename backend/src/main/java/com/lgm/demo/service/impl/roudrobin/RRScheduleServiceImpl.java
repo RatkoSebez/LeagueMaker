@@ -32,7 +32,6 @@ public class RRScheduleServiceImpl implements ScheduleService {
 
         List<Competitor> firstRow = new ArrayList<>();
         List<Competitor> secondRow = new ArrayList<>();
-//         fillRowsRandomly(firstRow, secondRow, competitors);
         List<Match> matches = new ArrayList<>();
         LocalDate date = league.getCompetitionStart();
         int round = 1;

@@ -4,7 +4,7 @@ import com.lgm.demo.model.Tournament;
 import com.lgm.demo.model.dto.request.MatchScoreRequest;
 import com.lgm.demo.model.dto.request.TournamentRequest;
 import com.lgm.demo.model.dto.response.MatchResponse;
-import com.lgm.demo.model.validation.ValidList;
+import com.lgm.demo.validation.ValidList;
 import com.lgm.demo.service.MatchService;
 import com.lgm.demo.service.TournamentService;
 import org.springframework.beans.factory.annotation.Qualifier;

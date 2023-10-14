@@ -2,8 +2,8 @@ package com.lgm.demo.service.impl;
 
 import com.lgm.demo.model.dto.request.SignUpRequest;
 import com.lgm.demo.model.enumeration.ERole;
-import com.lgm.demo.model.exceptions.EmailAlreadyExistsException;
-import com.lgm.demo.model.exceptions.UsernameAlreadyExistsException;
+import com.lgm.demo.exception.EmailAlreadyExistsException;
+import com.lgm.demo.exception.UsernameAlreadyExistsException;
 import com.lgm.demo.security.Role;
 import com.lgm.demo.model.User;
 import com.lgm.demo.model.dto.request.SignInRequest;

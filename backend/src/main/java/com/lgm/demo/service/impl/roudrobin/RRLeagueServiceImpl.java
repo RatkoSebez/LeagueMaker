@@ -4,7 +4,7 @@ import com.lgm.demo.model.*;
 import com.lgm.demo.model.dto.request.LeagueRequest;
 import com.lgm.demo.model.dto.response.CompetitorResponse;
 import com.lgm.demo.model.dto.response.MatchResponse;
-import com.lgm.demo.model.exceptions.CompetitionNotFoundException;
+import com.lgm.demo.exception.CompetitionNotFoundException;
 import com.lgm.demo.repository.*;
 import com.lgm.demo.service.AuthService;
 import com.lgm.demo.service.LeagueService;

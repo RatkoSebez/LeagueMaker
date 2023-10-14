@@ -29,13 +29,12 @@ public class SEScheduleServiceImpl implements ScheduleService{
 
         int round = numberOfMatchesInExtraRound > 0 ? 2 : 1;
         int matchIndex = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds()-1) : 0;
-
-        int times = numberOfMatchesInExtraRound/2;
-        matchIndex += times;
-        numberOfMatchesInExtraRound -= 2*times;
+        matchIndex += numberOfMatchesInExtraRound/2;
+        numberOfMatchesInExtraRound = numberOfMatchesInExtraRound % 2 == 0 ? 0 : 1;
 
         while(competitorIndex < competitors.size()){
-            Competitor secondCompetitor = numberOfMatchesInExtraRound == 0 ? competitors.get(competitorIndex++) : null;
+            Competitor secondCompetitor = numberOfMatchesInExtraRound == 0 ? competitors
+                    .get(competitorIndex++) : null;
             if(numberOfMatchesInExtraRound == 1) numberOfMatchesInExtraRound = 0;
             matches.get(matchIndex).setFirstCompetitor(competitors.get(competitorIndex++));
             matches.get(matchIndex++).setSecondCompetitor(secondCompetitor);
@@ -56,7 +55,8 @@ public class SEScheduleServiceImpl implements ScheduleService{
         int matchesInRound = matchesInRound(numberOfRounds--);
 
         while(matchesInRound-- > 0){
-            matches.add(Match.builder().round(round).competition(tournament).nodeNumber(nodeNumber--).build());
+            matches.add(Match.builder().round(round).competition(tournament)
+                    .nodeNumber(nodeNumber--).build());
             if(matchesInRound == 0 && numberOfRounds > 0){
                 matchesInRound = matchesInRound(numberOfRounds--);
                 round++;

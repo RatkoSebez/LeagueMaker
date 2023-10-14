@@ -3,7 +3,7 @@ package com.lgm.demo.service.impl;
 import com.lgm.demo.model.*;
 import com.lgm.demo.model.dto.response.CompetitorResponse;
 import com.lgm.demo.model.enumeration.EResult;
-import com.lgm.demo.model.exceptions.CompetitorNotFoundException;
+import com.lgm.demo.exception.CompetitorNotFoundException;
 import com.lgm.demo.repository.CompetitorRepository;
 import com.lgm.demo.service.CompetitorService;
 import org.springframework.stereotype.Service;
