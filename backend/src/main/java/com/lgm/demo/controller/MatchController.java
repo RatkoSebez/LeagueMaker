@@ -4,13 +4,13 @@ import com.lgm.demo.service.MatchService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins="*", maxAge=3600)
 @RestController
-@RequestMapping(path = "/api/v1/competition/match")
-public class MatchController {
+@RequestMapping(path="/api/v1/competition/match")
+public class MatchController{
     private final MatchService matchService;
 
-    public MatchController(@Qualifier("rr") MatchService matchService) {
+    public MatchController(@Qualifier("rr") MatchService matchService){
         this.matchService = matchService;
     }
 

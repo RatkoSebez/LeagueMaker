@@ -9,10 +9,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = NumberOfCompetitorsInLeague.class)
-@Target( { ElementType.METHOD, ElementType.FIELD })
+@Constraint(validatedBy=NumberOfCompetitorsInLeague.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CustomNumberOfCompetitorsInLeagueValidator {
+public @interface CustomNumberOfCompetitorsInLeagueValidator{
     String message() default "Custom validator: invalid number of competitors in league";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class MatchScoreRequest {
+public class MatchScoreRequest{
     private Long matchId;
     @CustomMatchScoreValidator
     private Integer firstCompetitorScore;

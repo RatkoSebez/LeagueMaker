@@ -6,7 +6,7 @@ import com.lgm.demo.model.dto.response.MatchResponse;
 
 import java.util.List;
 
-public interface MatchService {
+public interface MatchService{
     List<MatchResponse> updateMatchScores(List<MatchScoreRequest> request);
     MatchResponse updateMatchScore(MatchScoreRequest request);
     // todo implement this, and use it on Competitor info page

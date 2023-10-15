@@ -11,35 +11,35 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class CompetitorServiceImpl implements CompetitorService {
+public class CompetitorServiceImpl implements CompetitorService{
     private final CompetitorRepository competitorRepository;
 
-    public CompetitorServiceImpl(CompetitorRepository competitorRepository) {
+    public CompetitorServiceImpl(CompetitorRepository competitorRepository){
         this.competitorRepository = competitorRepository;
     }
 
     @Override
-    public CompetitorResponse getCompetitor(Long competitorId) {
+    public CompetitorResponse getCompetitor(Long competitorId){
         Competitor competitor =
                 competitorRepository.findById(competitorId).orElseThrow(() -> new CompetitorNotFoundException(competitorId));
         return CompetitorResponse.entityToDto(competitor);
     }
 
     @Override
-    public List<Competitor> createEmptyCompetitors(Integer numberOfCompetitors) {
+    public List<Competitor> createEmptyCompetitors(Integer numberOfCompetitors){
         List<Competitor> competitors = new ArrayList<>();
-        for(int i=1; i<=numberOfCompetitors; i++)
+        for(int i = 1; i <= numberOfCompetitors; i++)
             competitors.add(new Competitor(null, "team " + i, 0, 0, 0, 0, 0, 0, 0, null));
         return competitors;
     }
 
     @Override
-    public void updateCompetitors(Match match) {
-        calculateCompetitorsData(match,false);
+    public void updateCompetitors(Match match){
+        calculateCompetitorsData(match, false);
     }
 
     @Override
-    public void invalidateCompetitors(Match match) {
+    public void invalidateCompetitors(Match match){
         calculateCompetitorsData(match, true);
     }
 
@@ -49,7 +49,7 @@ public class CompetitorServiceImpl implements CompetitorService {
         int i = isAlreadyPlayed ? -1 : 1;
         int pointsWin = 0, pointsDraw = 0, pointsLose = 0;
         if(match.getCompetition() instanceof League){
-            League league = (League) match.getCompetition();
+            League league = (League)match.getCompetition();
             pointsWin = league.getPointsWin();
             pointsDraw = league.getPointsDraw();
             pointsLose = league.getPointsLose();
@@ -92,9 +92,9 @@ public class CompetitorServiceImpl implements CompetitorService {
         }
         if(isAlreadyPlayed){
             List<Integer> last5games1 = firstCompetitor.getLast5games();
-            last5games1.remove(last5games1.size()-1);
+            last5games1.remove(last5games1.size() - 1);
             List<Integer> last5games2 = secondCompetitor.getLast5games();
-            last5games2.remove(last5games2.size()-1);
+            last5games2.remove(last5games2.size() - 1);
         }
         else{
             int gameCode = 0;
@@ -106,8 +106,8 @@ public class CompetitorServiceImpl implements CompetitorService {
             // remove first element and shift array left
             if(last5games.size() > 5){
                 last5games.remove(0);
-                for (int j=5; j>=0; j--)
-                    last5games.set(i+1, last5games.get(i));
+                for(int j = 5; j >= 0; j--)
+                    last5games.set(i + 1, last5games.get(i));
             }
             firstCompetitor.setLast5games(last5games);
 
@@ -119,8 +119,8 @@ public class CompetitorServiceImpl implements CompetitorService {
             // remove first element and shift array left
             if(last5games2.size() > 5){
                 last5games2.remove(0);
-                for (int j=5; j>=0; j--)
-                    last5games2.set(i+1, last5games2.get(i));
+                for(int j = 5; j >= 0; j--)
+                    last5games2.set(i + 1, last5games2.get(i));
             }
             secondCompetitor.setLast5games(last5games2);
         }

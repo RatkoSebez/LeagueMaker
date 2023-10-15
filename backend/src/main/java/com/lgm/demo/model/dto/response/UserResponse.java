@@ -19,7 +19,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @Builder
-public class UserResponse {
+public class UserResponse{
     private Long id;
     private String username;
     private String name;
@@ -31,14 +31,14 @@ public class UserResponse {
     private String profileImageInBase64;
     private ESex sex;
 
-    public static List<UserResponse> entityToDtoList(List<User> users) throws IOException {
+    public static List<UserResponse> entityToDtoList(List<User> users) throws IOException{
         List<UserResponse> userResponses = new ArrayList<>();
-        for(User u : users)
+        for(User u: users)
             userResponses.add(entityToDto(u));
         return userResponses;
     }
 
-    public static UserResponse entityToDto(User user) throws IOException {
+    public static UserResponse entityToDto(User user) throws IOException{
         return new UserResponse(
                 user.getId(),
                 user.getUsername(),

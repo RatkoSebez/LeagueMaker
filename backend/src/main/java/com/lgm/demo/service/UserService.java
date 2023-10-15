@@ -9,7 +9,7 @@ import com.lgm.demo.model.dto.response.UserResponse;
 
 import java.io.IOException;
 
-public interface UserService {
+public interface UserService{
     UserResponse updateUser(UpdateUserRequest request) throws IOException;
     UserResponse getUser() throws IOException;
     JwtResponse updatePassword(ChangePasswordRequest request) throws IOException;

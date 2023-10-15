@@ -8,7 +8,7 @@ import com.lgm.demo.model.dto.response.JwtResponse;
 
 import java.io.IOException;
 
-public interface AuthService {
+public interface AuthService{
     boolean usernameExists(String username);
     boolean emailExists(String email);
     User getLoggedInUser();

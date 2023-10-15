@@ -9,10 +9,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = CompetitorNameValidator.class)
-@Target( { ElementType.METHOD, ElementType.FIELD })
+@Constraint(validatedBy=CompetitorNameValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CustomCompetitorNameValidator {
+public @interface CustomCompetitorNameValidator{
     String message() default "Custom validator: invalid competitor name";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

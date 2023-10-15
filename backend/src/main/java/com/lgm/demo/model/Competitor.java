@@ -14,7 +14,7 @@ import java.util.*;
 @Entity
 public class Competitor implements Comparable<Competitor>{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer gamesPlayed;
@@ -29,7 +29,7 @@ public class Competitor implements Comparable<Competitor>{
     private List<Integer> last5games = new ArrayList<>();
 
     @Override
-    public int compareTo(Competitor o) {
+    public int compareTo(Competitor o){
         // firstly I compare number of points
         int ans = o.points.compareTo(points);
         if(ans != 0) return ans;

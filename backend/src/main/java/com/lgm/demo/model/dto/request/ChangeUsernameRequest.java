@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ChangeUsernameRequest {
+public class ChangeUsernameRequest{
     @CustomUsernameValidator
     private String newUsername;
     private String password;

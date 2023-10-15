@@ -12,12 +12,12 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateCompetitionRequest {
+public class UpdateCompetitionRequest{
     private Long competitionId;
     @CustomCompetitionNameValidator
     private String name;
-    @Size(max = 1000)
+    @Size(max=1000)
     private String about;
-    @Size(max = 1000)
+    @Size(max=1000)
     private String rules;
 }

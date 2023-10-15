@@ -6,13 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins="*", maxAge=3600)
 @RestController
-@RequestMapping(path = "/api/v1/competitor")
-public class CompetitorController {
+@RequestMapping(path="/api/v1/competitor")
+public class CompetitorController{
     private final CompetitorService competitorService;
 
-    public CompetitorController(CompetitorService competitorService) {
+    public CompetitorController(CompetitorService competitorService){
         this.competitorService = competitorService;
     }
 

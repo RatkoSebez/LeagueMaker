@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CompetitorRequest {
+public class CompetitorRequest{
     private Long id;
     @CustomCompetitorNameValidator
     private String name;

@@ -33,8 +33,8 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(
         // securedEnabled = true,
         // jsr250Enabled = true,
-        prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+        prePostEnabled=true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
@@ -43,18 +43,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final PasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Bean
-    public AuthTokenFilter authenticationJwtTokenFilter() {
+    public AuthTokenFilter authenticationJwtTokenFilter(){
         return new AuthTokenFilter();
     }
 
     @Override
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception{
         return super.authenticationManagerBean();
     }
 
@@ -63,12 +63,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
         return getPasswordEncoder();
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception{
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

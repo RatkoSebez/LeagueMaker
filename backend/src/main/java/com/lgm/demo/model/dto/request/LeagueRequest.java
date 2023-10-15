@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class LeagueRequest {
+public class LeagueRequest{
     @CustomNumberOfCompetitorsInLeagueValidator
     private Integer numberOfCompetitors;
     @CustomTimesEachPlaysWithEachValidator

@@ -5,6 +5,6 @@ import com.lgm.demo.model.League;
 import com.lgm.demo.model.Schedule;
 import com.lgm.demo.model.Tournament;
 
-public interface ScheduleService {
+public interface ScheduleService{
     Schedule createSchedule(Competition competition);
 }

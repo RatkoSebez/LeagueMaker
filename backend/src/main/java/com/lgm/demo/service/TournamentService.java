@@ -7,7 +7,7 @@ import com.lgm.demo.model.dto.response.MatchResponse;
 
 import java.util.List;
 
-public interface TournamentService {
+public interface TournamentService{
     Tournament createTournament(TournamentRequest tournamentRequest);
     List<MatchResponse> getTournamentMatches(Long tournamentId);
 }

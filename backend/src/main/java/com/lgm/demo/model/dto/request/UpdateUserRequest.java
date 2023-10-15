@@ -12,11 +12,11 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UpdateUserRequest {
+public class UpdateUserRequest{
     @CustomNameValidator
     private String name;
     @CustomNameValidator
     private String surname;
-    @Size(max = 500)
+    @Size(max=500)
     private String bio;
 }

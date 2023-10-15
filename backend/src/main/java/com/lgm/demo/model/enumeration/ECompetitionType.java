@@ -1,6 +1,6 @@
 package com.lgm.demo.model.enumeration;
 
-public enum ECompetitionType {
+public enum ECompetitionType{
     LEAGUE,
     TOURNAMENT
 }

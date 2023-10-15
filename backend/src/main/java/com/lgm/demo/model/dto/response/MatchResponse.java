@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-public class MatchResponse {
+public class MatchResponse{
     private Long id;
     private Competitor firstCompetitor;
     private Competitor secondCompetitor;

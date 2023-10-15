@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ChangeEmailRequest {
+public class ChangeEmailRequest{
     @CustomPasswordValidator
     private String password;
     @NotBlank

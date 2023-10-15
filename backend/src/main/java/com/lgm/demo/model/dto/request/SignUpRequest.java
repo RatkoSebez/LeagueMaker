@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class SignUpRequest {
+public class SignUpRequest{
     @CustomUsernameValidator
     private String username;
     @NotBlank

@@ -7,7 +7,7 @@ import com.lgm.demo.model.dto.response.MatchResponse;
 
 import java.util.List;
 
-public interface LeagueService {
+public interface LeagueService{
     League createLeague(LeagueRequest leagueRequest);
     List<CompetitorResponse> getStandings(Long leagueId);
     List<MatchResponse> getSchedule(Long competitionId, Integer round);

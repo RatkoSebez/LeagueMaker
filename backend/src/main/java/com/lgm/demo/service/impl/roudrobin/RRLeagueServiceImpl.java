@@ -17,7 +17,7 @@ import java.util.*;
 
 @Service
 @Qualifier("rr")
-public class RRLeagueServiceImpl implements LeagueService {
+public class RRLeagueServiceImpl implements LeagueService{
     private final CompetitorService competitorService;
     private final ScheduleService scheduleService;
     private final CompetitionRepository competitionRepository;
@@ -32,7 +32,7 @@ public class RRLeagueServiceImpl implements LeagueService {
                                AuthService authService,
                                UserRepository userRepository,
                                MatchRepository matchRepository,
-                               LeagueRepository leagueRepository) {
+                               LeagueRepository leagueRepository){
         this.competitorService = competitorService;
         this.scheduleService = scheduleService;
         this.competitionRepository = competitionRepository;
@@ -43,7 +43,7 @@ public class RRLeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public League createLeague(LeagueRequest req) {
+    public League createLeague(LeagueRequest req){
         League league = new League(
                 null,
                 null,
@@ -76,7 +76,7 @@ public class RRLeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public List<CompetitorResponse> getStandings(Long leagueId) {
+    public List<CompetitorResponse> getStandings(Long leagueId){
         Competition competition = competitionRepository.getCompetitionById(leagueId)
                 .orElseThrow(() -> new CompetitionNotFoundException(leagueId));
         List<Competitor> competitors = competition.getCompetitors();
@@ -85,17 +85,17 @@ public class RRLeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public List<MatchResponse> getSchedule(Long competitionId, Integer round) {
+    public List<MatchResponse> getSchedule(Long competitionId, Integer round){
         List<Match> matches = matchRepository.getMatchesByCompetitionIdAndRound(competitionId, round);
         Collections.sort(matches);
         List<MatchResponse> response = new ArrayList<>();
-        for(Match match : matches)
+        for(Match match: matches)
             response.add(MatchResponse.entityToDto(match));
         return response;
     }
 
     @Override
-    public Integer getNumberOfRounds(Long leagueId) {
+    public Integer getNumberOfRounds(Long leagueId){
         return leagueRepository.getById(leagueId).getRounds();
     }
 }

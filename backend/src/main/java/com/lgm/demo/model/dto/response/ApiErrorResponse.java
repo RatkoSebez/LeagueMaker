@@ -12,10 +12,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ApiErrorResponse {
+public class ApiErrorResponse{
     private HttpStatus status;
     private Integer statusCode;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
     private String message;
     private Object request;
@@ -23,11 +23,11 @@ public class ApiErrorResponse {
     private List<FieldError> fieldErrors = new ArrayList<>();
     // private String path; // TODO bilo bi lepo da dodas ovo u poruku greske (url koji je pogodjen)
 
-    private ApiErrorResponse() {
+    private ApiErrorResponse(){
         timestamp = LocalDateTime.now();
     }
 
-    public ApiErrorResponse(HttpStatus status, String message, String exceptionType, Object request) {
+    public ApiErrorResponse(HttpStatus status, String message, String exceptionType, Object request){
         this();
         this.status = status;
         statusCode = status.value();
@@ -36,7 +36,7 @@ public class ApiErrorResponse {
         this.request = request;
     }
 
-    public void addFieldError(FieldError fieldError) {
+    public void addFieldError(FieldError fieldError){
         Object[] arguments = new Object[1];
         FieldError error = new FieldError(
                 fieldError.getObjectName(),
@@ -46,7 +46,7 @@ public class ApiErrorResponse {
                 fieldError.getCodes(),
                 arguments,
                 fieldError.getDefaultMessage()
-                );
+        );
         fieldErrors.add(error);
     }
 }

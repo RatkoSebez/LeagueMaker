@@ -13,12 +13,12 @@ import java.util.List;
 @ToString
 @Builder
 @Entity
-public class Schedule {
+public class Schedule{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Long competitionId;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "schedule_id", referencedColumnName = "id")
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="schedule_id", referencedColumnName="id")
     private List<Match> matches = new ArrayList<>();
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class JwtResponse {
+public class JwtResponse{
     private String token;
     private String type = "Bearer";
     private Long id;
@@ -19,7 +19,7 @@ public class JwtResponse {
     private List<Long> adminOfCompetitions;
     private String profileImageInBase64;
 
-    public JwtResponse(String token, Long id, String username, String email, List<String> roles, List<Long> adminOfCompetitions, String profileImageInBase64) {
+    public JwtResponse(String token, Long id, String username, String email, List<String> roles, List<Long> adminOfCompetitions, String profileImageInBase64){
         this.token = token;
         this.id = id;
         this.username = username;

@@ -9,10 +9,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = TimesEachPlaysWithEachValidator.class)
-@Target( { ElementType.METHOD, ElementType.FIELD })
+@Constraint(validatedBy=TimesEachPlaysWithEachValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CustomTimesEachPlaysWithEachValidator {
+public @interface CustomTimesEachPlaysWithEachValidator{
     String message() default "Custom validator: invalid times each plays with each";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

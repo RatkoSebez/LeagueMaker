@@ -1,6 +1,6 @@
 package com.lgm.demo.model.constant;
 
-public class ExceptionMessageConstant {
+public class ExceptionMessageConstant{
     public static final String INCORRECT_PASSWORD_MESSAGE = "Password is incorrect";
     public static final String USERNAME_ALREADY_EXISTS_MESSAGE = "Username already exists";
     public static final String EMAIL_ALREADY_EXISTS_MESSAGE = "Email already exists";

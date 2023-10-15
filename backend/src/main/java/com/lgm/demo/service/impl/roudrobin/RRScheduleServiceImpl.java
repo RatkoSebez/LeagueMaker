@@ -12,11 +12,11 @@ import java.util.List;
 
 @Service
 @Qualifier("rr")
-public class RRScheduleServiceImpl implements ScheduleService {
+public class RRScheduleServiceImpl implements ScheduleService{
 
     @Override
-    public Schedule createSchedule(Competition competition) {
-        League league = (League) competition;
+    public Schedule createSchedule(Competition competition){
+        League league = (League)competition;
         List<Competitor> competitors = league.getCompetitors();
         int numberOfCompetitors = competitors.size();
 
@@ -35,12 +35,12 @@ public class RRScheduleServiceImpl implements ScheduleService {
         List<Match> matches = new ArrayList<>();
         LocalDate date = league.getCompetitionStart();
         int round = 1;
-        while(numberOfRounds --> 0) {
+        while(numberOfRounds-- > 0){
             // this shuffles competitors so not same matches will repeat over and over if teams plays more than once
             // against each other
             if((numberOfRounds + 1) % roundsNeededToPlayOnceAgainstEveryone == 0)
                 fillRowsRandomly(firstRow, secondRow, competitors);
-            for(int i=0; i<gamesPerRound; i++) {
+            for(int i = 0; i < gamesPerRound; i++){
                 Competitor firstRowCompetitor = firstRow.get(i);
                 Competitor secondRowCompetitor = secondRow.get(i);
                 if(firstRowCompetitor == null || secondRowCompetitor == null) continue;
@@ -60,24 +60,24 @@ public class RRScheduleServiceImpl implements ScheduleService {
     }
 
     private void rotateArrays(List<Competitor> firstRow, List<Competitor> secondRow, int gamesPerRound){
-        Competitor lastInFirstRow = firstRow.get(gamesPerRound-1);
+        Competitor lastInFirstRow = firstRow.get(gamesPerRound - 1);
         Competitor firstInSecondRow = secondRow.get(0);
-        for(int i=gamesPerRound-1; i>1; i--){
-            firstRow.set(i, firstRow.get(i-1));
+        for(int i = gamesPerRound - 1; i > 1; i--){
+            firstRow.set(i, firstRow.get(i - 1));
         }
         firstRow.set(1, firstInSecondRow);
-        for(int i=0; i<gamesPerRound-1; i++){
-            secondRow.set(i, secondRow.get(i+1));
+        for(int i = 0; i < gamesPerRound - 1; i++){
+            secondRow.set(i, secondRow.get(i + 1));
         }
-        secondRow.set(gamesPerRound-1, lastInFirstRow);
+        secondRow.set(gamesPerRound - 1, lastInFirstRow);
     }
 
-    private void fillRowsRandomly(List<Competitor> firstRow, List<Competitor> secondRow, List<Competitor> competitors) {
+    private void fillRowsRandomly(List<Competitor> firstRow, List<Competitor> secondRow, List<Competitor> competitors){
         Collections.shuffle(competitors);
         firstRow.clear();
         secondRow.clear();
 
-        for(int i=0; i<competitors.size(); i++){
+        for(int i = 0; i < competitors.size(); i++){
             if(i < competitors.size() / 2) firstRow.add(competitors.get(i));
             else secondRow.add(competitors.get(i));
         }

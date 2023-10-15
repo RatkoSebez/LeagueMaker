@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompetitorResponse {
+public class CompetitorResponse{
     private Long id;
     private String name;
     private Integer gamesPlayed;
@@ -27,7 +27,7 @@ public class CompetitorResponse {
 
     public static List<CompetitorResponse> entityToDtoList(List<Competitor> competitors){
         List<CompetitorResponse> response = new ArrayList<>();
-        for(Competitor competitor : competitors)
+        for(Competitor competitor: competitors)
             response.add(entityToDto(competitor));
         return response;
     }

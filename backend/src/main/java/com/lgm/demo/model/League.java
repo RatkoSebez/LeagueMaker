@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @Entity
-public class League extends Competition {
+public class League extends Competition{
     private Integer timesEachPlaysWithEach;
     private Integer pointsWin;
     private Integer pointsDraw;
@@ -21,7 +21,7 @@ public class League extends Competition {
     private LocalDate competitionStart;
     private Integer daysBetweenMatches;
 
-    public League(Long id, List<Competitor> competitors, Schedule schedule, Integer numberOfCompetitors, String name, Integer timesEachPlaysWithEach, Integer pointsWin, Integer pointsDraw, Integer pointsLose, Integer rounds, LocalDate competitionStart, Integer daysBetweenMatches) {
+    public League(Long id, List<Competitor> competitors, Schedule schedule, Integer numberOfCompetitors, String name, Integer timesEachPlaysWithEach, Integer pointsWin, Integer pointsDraw, Integer pointsLose, Integer rounds, LocalDate competitionStart, Integer daysBetweenMatches){
         super(id, competitors, schedule, numberOfCompetitors, name, "", "");
         this.timesEachPlaysWithEach = timesEachPlaysWithEach;
         this.pointsWin = pointsWin;
@@ -32,7 +32,7 @@ public class League extends Competition {
         this.daysBetweenMatches = daysBetweenMatches;
     }
 
-    public League(Integer timesEachPlaysWithEach, Integer pointsWin, Integer pointsDraw, Integer pointsLose, Integer rounds, LocalDate competitionStart, Integer daysBetweenMatches) {
+    public League(Integer timesEachPlaysWithEach, Integer pointsWin, Integer pointsDraw, Integer pointsLose, Integer rounds, LocalDate competitionStart, Integer daysBetweenMatches){
         this.timesEachPlaysWithEach = timesEachPlaysWithEach;
         this.pointsWin = pointsWin;
         this.pointsDraw = pointsDraw;

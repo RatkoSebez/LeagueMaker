@@ -8,7 +8,7 @@ import com.lgm.demo.model.dto.response.CompetitorResponse;
 
 import java.util.List;
 
-public interface CompetitionService {
+public interface CompetitionService{
     Competition getCompetition(Long competitionId);
     List<CompetitionResponse> getCompetitionNames(String competitionIdsString);
     List<CompetitionResponse> getSearchResults(String query);

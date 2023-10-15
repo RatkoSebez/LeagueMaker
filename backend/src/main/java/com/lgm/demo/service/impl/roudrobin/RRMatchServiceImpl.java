@@ -16,26 +16,26 @@ import java.util.List;
 
 @Service
 @Qualifier("rr")
-public class RRMatchServiceImpl implements MatchService {
+public class RRMatchServiceImpl implements MatchService{
     private final MatchRepository matchRepository;
     private final CompetitorService competitorService;
     private final AuthService authService;
 
     public RRMatchServiceImpl(MatchRepository matchRepository,
                               CompetitorService competitorService,
-                              AuthService authService) {
+                              AuthService authService){
         this.matchRepository = matchRepository;
         this.competitorService = competitorService;
         this.authService = authService;
     }
 
     @Override
-    public List<MatchResponse> updateMatchScores(List<MatchScoreRequest> request) {
+    public List<MatchResponse> updateMatchScores(List<MatchScoreRequest> request){
         return null;
     }
 
     @Override
-    public MatchResponse updateMatchScore(MatchScoreRequest request) {
+    public MatchResponse updateMatchScore(MatchScoreRequest request){
         Match match = matchRepository.getById(request.getMatchId());
         if(!authService.isAdminOfCompetition(match.getCompetition().getId()))
             throw new IsNotAdminOfCompetitionException(request);
@@ -45,7 +45,7 @@ public class RRMatchServiceImpl implements MatchService {
         match.setSecondCompetitorScore(request.getSecondCompetitorScore());
         if(match.getFirstCompetitorScore() > match.getSecondCompetitorScore())
             match.setResult(EResult.FIRST_WON);
-        else if (match.getFirstCompetitorScore() < match.getSecondCompetitorScore())
+        else if(match.getFirstCompetitorScore() < match.getSecondCompetitorScore())
             match.setResult(EResult.SECOND_WON);
         else
             match.setResult(EResult.DRAW);
@@ -58,12 +58,12 @@ public class RRMatchServiceImpl implements MatchService {
     }
 
     @Override
-    public List<Match> getPastMatchesForCompetitor(Long competitionId, Long competitorId) {
+    public List<Match> getPastMatchesForCompetitor(Long competitionId, Long competitorId){
         return matchRepository.getPastMatchesForCompetitor(competitionId, competitorId);
     }
 
     @Override
-    public List<Match> getFutureMatchesForCompetitor(Long competitionId, Long competitorId) {
+    public List<Match> getFutureMatchesForCompetitor(Long competitionId, Long competitorId){
         return matchRepository.getFutureMatchesForCompetitor(competitionId, competitorId);
     }
 }

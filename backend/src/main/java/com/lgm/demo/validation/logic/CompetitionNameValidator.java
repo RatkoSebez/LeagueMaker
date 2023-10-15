@@ -5,14 +5,14 @@ import com.lgm.demo.validation.annotation.CustomCompetitionNameValidator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class CompetitionNameValidator implements ConstraintValidator<CustomCompetitionNameValidator, String> {
+public class CompetitionNameValidator implements ConstraintValidator<CustomCompetitionNameValidator,String>{
     @Override
-    public void initialize(CustomCompetitionNameValidator constraintAnnotation) {
+    public void initialize(CustomCompetitionNameValidator constraintAnnotation){
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
     @Override
-    public boolean isValid(String name, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String name, ConstraintValidatorContext constraintValidatorContext){
         if(name == null) return false;
         return (name.length() >= 3) &&
                 (name.length() <= 30) &&

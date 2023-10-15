@@ -10,7 +10,7 @@ import java.util.List;
 // spring validation does not work on List<E>
 // change List to ValidList in controller parameter and validation will be applied
 @Data
-public class ValidList<E> implements List<E> {
+public class ValidList<E> implements List<E>{
     @Valid
     @Delegate
     private List<E> list = new ArrayList<>();

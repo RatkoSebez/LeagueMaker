@@ -13,8 +13,8 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Random;
 
-public interface ImageService {
-    static String getRandomProfileImagePath(User user) {
+public interface ImageService{
+    static String getRandomProfileImagePath(User user){
         String path = "src/main/resources/images/";
         Random random = new Random();
         if(user.getSex() == ESex.MALE)
@@ -24,7 +24,7 @@ public interface ImageService {
         return path;
     }
 
-    static String getBase64Image(String path) throws IOException {
+    static String getBase64Image(String path) throws IOException{
         if(path == null)
             return null;
         File image = new File(path);

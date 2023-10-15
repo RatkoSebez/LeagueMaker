@@ -18,22 +18,22 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Validated
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins="*", maxAge=3600)
 @RestController
-@RequestMapping(path = "/api/v1/singleelimination")
-public class SEController {
+@RequestMapping(path="/api/v1/singleelimination")
+public class SEController{
     private final TournamentService tournamentService;
     private final MatchService matchService;
 
     public SEController(@Qualifier("se") TournamentService tournamentService,
-                        @Qualifier("se") MatchService matchService) {
+                        @Qualifier("se") MatchService matchService){
         this.tournamentService = tournamentService;
         this.matchService = matchService;
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping
-    public ResponseEntity<Long> createTournament(@Valid @RequestBody TournamentRequest tournamentRequest) {
+    public ResponseEntity<Long> createTournament(@Valid @RequestBody TournamentRequest tournamentRequest){
         Tournament tournament = tournamentService.createTournament(tournamentRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(tournament.getId());
     }

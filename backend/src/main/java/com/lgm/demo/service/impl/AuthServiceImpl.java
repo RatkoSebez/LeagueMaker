@@ -26,14 +26,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class AuthServiceImpl implements AuthService {
+public class AuthServiceImpl implements AuthService{
     private final UserRepository userRepository;
     private final JwtUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
 
     public AuthServiceImpl(UserRepository userRepository,
                            JwtUtils jwtUtils,
-                           AuthenticationManager authenticationManager) {
+                           AuthenticationManager authenticationManager){
         this.userRepository = userRepository;
         this.jwtUtils = jwtUtils;
         this.authenticationManager = authenticationManager;
@@ -65,14 +65,14 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public JwtResponse signIn(SignInRequest signInRequest) throws IOException {
+    public JwtResponse signIn(SignInRequest signInRequest) throws IOException{
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
-        User user = (User) authentication.getPrincipal();
+        User user = (User)authentication.getPrincipal();
         List<String> roles = user.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
@@ -89,11 +89,11 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void signUp(SignUpRequest signUpRequest) {
-        if (usernameExists(signUpRequest.getUsername()))
+    public void signUp(SignUpRequest signUpRequest){
+        if(usernameExists(signUpRequest.getUsername()))
             throw new UsernameAlreadyExistsException(signUpRequest);
 
-        if (emailExists(signUpRequest.getEmail()))
+        if(emailExists(signUpRequest.getEmail()))
             throw new EmailAlreadyExistsException(signUpRequest);
 
         User user = new User(

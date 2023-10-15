@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class TournamentRequest {
+public class TournamentRequest{
     @CustomNumberOfCompetitorsInTournamentValidator
     private Integer numberOfCompetitors;
     @CustomCompetitionNameValidator

@@ -41,7 +41,7 @@ public class SETournamentServiceImpl implements TournamentService{
 
     @Override
     public Tournament createTournament(TournamentRequest request){
-        int numberOfRounds = (int)Math.ceil(Math.log(request.getNumberOfCompetitors())/Math.log(2));
+        int numberOfRounds = (int)Math.ceil(Math.log(request.getNumberOfCompetitors()) / Math.log(2));
 
         Tournament tournament = new Tournament(
                 null,
@@ -75,7 +75,7 @@ public class SETournamentServiceImpl implements TournamentService{
         Collections.sort(matches);
 
         List<MatchResponse> responses = new ArrayList<>();
-        for(Match match : matches)
+        for(Match match: matches)
             responses.add(MatchResponse.entityToDto(match));
 
         return responses;

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CompetitionRepository extends JpaRepository<Competition, Long> {
+public interface CompetitionRepository extends JpaRepository<Competition,Long>{
     Optional<Competition> getCompetitionById(Long id);
 
     @Query("SELECT c " +

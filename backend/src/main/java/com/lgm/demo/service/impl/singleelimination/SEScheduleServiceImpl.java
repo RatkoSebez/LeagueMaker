@@ -28,8 +28,8 @@ public class SEScheduleServiceImpl implements ScheduleService{
         }
 
         int round = numberOfMatchesInExtraRound > 0 ? 2 : 1;
-        int matchIndex = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds()-1) : 0;
-        matchIndex += numberOfMatchesInExtraRound/2;
+        int matchIndex = round == 2 ? (int)Math.pow(2, tournament.getNumberOfRounds() - 1) : 0;
+        matchIndex += numberOfMatchesInExtraRound / 2;
         numberOfMatchesInExtraRound = numberOfMatchesInExtraRound % 2 == 0 ? 0 : 1;
 
         while(competitorIndex < competitors.size()){
@@ -44,14 +44,14 @@ public class SEScheduleServiceImpl implements ScheduleService{
     }
 
     private boolean isPowerOfTwo(int n){
-        double v = Math.log(n)/Math.log(2);
+        double v = Math.log(n) / Math.log(2);
         return (int)(Math.ceil(v)) == (int)(Math.floor(v));
     }
 
     private List<Match> createEmptyMatches(Tournament tournament){
         List<Match> matches = new ArrayList<>();
         int numberOfRounds = tournament.getNumberOfRounds(), round = 1;
-        int nodeNumber = matchesInRound(numberOfRounds+1)-1;
+        int nodeNumber = matchesInRound(numberOfRounds + 1) - 1;
         int matchesInRound = matchesInRound(numberOfRounds--);
 
         while(matchesInRound-- > 0){
@@ -66,10 +66,10 @@ public class SEScheduleServiceImpl implements ScheduleService{
     }
 
     private int matchesInRound(int round){
-        return (int)Math.pow(2, round-1);
+        return (int)Math.pow(2, round - 1);
     }
 
     private int getNumberOfMatchesInExtraRound(int numberOfCompetitors, int numberOfRounds){
-        return isPowerOfTwo(numberOfCompetitors) ? 0 : numberOfCompetitors-matchesInRound(numberOfRounds);
+        return isPowerOfTwo(numberOfCompetitors) ? 0 : numberOfCompetitors - matchesInRound(numberOfRounds);
     }
 }

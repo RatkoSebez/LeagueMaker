@@ -17,17 +17,17 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final AuthService authService;
 
-    public UserServiceImpl(UserRepository userRepository, AuthService authService) {
+    public UserServiceImpl(UserRepository userRepository, AuthService authService){
         this.userRepository = userRepository;
         this.authService = authService;
     }
 
     @Override
-    public UserResponse updateUser(UpdateUserRequest request) throws IOException {
+    public UserResponse updateUser(UpdateUserRequest request) throws IOException{
         User user = authService.getLoggedInUser();
         user.setName(request.getName());
         user.setSurname(request.getSurname());
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse getUser() throws IOException {
+    public UserResponse getUser() throws IOException{
         return UserResponse.entityToDto(authService.getLoggedInUser());
     }
 
     @Override
-    public JwtResponse updatePassword(ChangePasswordRequest request) throws IOException {
+    public JwtResponse updatePassword(ChangePasswordRequest request) throws IOException{
         User user = authService.getLoggedInUser();
         if(!passwordsAreEqual(user.getPassword(), request.getCurrentPassword()))
             throw new IncorrectPasswordException(request);
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         return authService.signIn(new SignInRequest(user.getUsername(), request.getNewPassword()));
     }
 
-    public JwtResponse updateUsername(ChangeUsernameRequest request) throws IOException {
+    public JwtResponse updateUsername(ChangeUsernameRequest request) throws IOException{
         if(authService.usernameExists(request.getNewUsername()))
             throw new UsernameAlreadyExistsException(request);
         User user = authService.getLoggedInUser();
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JwtResponse updateEmail(ChangeEmailRequest request) throws IOException {
+    public JwtResponse updateEmail(ChangeEmailRequest request) throws IOException{
         System.out.println(request.getNewEmail() + " " + request.getPassword());
         if(authService.emailExists(request.getNewEmail()))
             throw new EmailAlreadyExistsException(request);

@@ -16,13 +16,13 @@ import java.time.LocalDate;
 @Builder
 public class Match implements Comparable<Match>{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "firstcompetitor_id", referencedColumnName = "id")
+    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="firstcompetitor_id", referencedColumnName="id")
     private Competitor firstCompetitor;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "secondcompetitor_id", referencedColumnName = "id")
+    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="secondcompetitor_id", referencedColumnName="id")
     private Competitor secondCompetitor;
     // range when game should be played
     // if there is exact time for game, both dates will be same
@@ -35,12 +35,12 @@ public class Match implements Comparable<Match>{
     private Integer secondCompetitorScore;
     private Boolean isFinished = false;
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "competition", referencedColumnName = "id")
+    @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="competition", referencedColumnName="id")
     private Competition competition;
     private Integer nodeNumber;
 
-    public Match(Competitor firstCompetitor, Competitor secondCompetitor, LocalDate startTime, LocalDate endTime, Integer round, Competition competition, Integer matchNumber) {
+    public Match(Competitor firstCompetitor, Competitor secondCompetitor, LocalDate startTime, LocalDate endTime, Integer round, Competition competition, Integer matchNumber){
         this.firstCompetitor = firstCompetitor;
         this.secondCompetitor = secondCompetitor;
         this.startTime = startTime;
@@ -51,10 +51,10 @@ public class Match implements Comparable<Match>{
     }
 
     @Override
-    public int compareTo(Match o) {
+    public int compareTo(Match o){
         if(this.nodeNumber == null)
             return this.id.compareTo(o.id);
-        return this.nodeNumber- o.nodeNumber;
+        return this.nodeNumber - o.nodeNumber;
 //        if(Objects.equals(this.matchNumber, o.matchNumber))
 //            return 0;
 //        else if(this.matchNumber > o.matchNumber)

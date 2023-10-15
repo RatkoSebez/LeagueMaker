@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CompetitionResponse {
+public class CompetitionResponse{
     private Long id;
     private String name;
     private String about;
