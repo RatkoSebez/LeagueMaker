@@ -19,7 +19,7 @@ Below are screenshots displaying several pages from the website.
 3. League page
 ![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/league.png "League page")
 4. User profile page
-5. ![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/profile.png "Profile page")
+![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/profile.png "Profile page")
 
 ## Usage
 
