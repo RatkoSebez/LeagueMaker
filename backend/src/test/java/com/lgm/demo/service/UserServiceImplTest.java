@@ -41,7 +41,8 @@ public class UserServiceImplTest {
     @Test
     public void UpdateUser_FieldsAreUpdated() throws IOException {
         User user = User.builder().username("username").surname("surname").bio("bio").build();
-        UpdateUserRequest request = new UpdateUserRequest("newName", "newSurname", "new bio");
+        UpdateUserRequest request = new UpdateUserRequest(
+                "newName", "newSurname", "new bio");
         when(authService.getLoggedInUser()).thenReturn(user);
 
         userService.updateUser(request);
@@ -65,8 +66,14 @@ public class UserServiceImplTest {
     @MockitoSettings(strictness = Strictness.LENIENT)
     public void UpdatePassword_ThrowsExceptionWhenPasswordIsIncorrect() throws IOException {
         // hashed password is 123456789
-        User user = User.builder().username("username").surname("surname").bio("bio").password("$2a$10$OK0pYmZHHCfxjSxQzVPx9eXUpVzUxOygHjEtCMrhPiqrng/nzC5Fq").build();
-        ChangePasswordRequest request = new ChangePasswordRequest("wrongPassword", "newpassword");
+        User user = User.builder()
+                .username("username")
+                .surname("surname")
+                .bio("bio")
+                .password("$2a$10$OK0pYmZHHCfxjSxQzVPx9eXUpVzUxOygHjEtCMrhPiqrng/nzC5Fq").build();
+        ChangePasswordRequest request = new ChangePasswordRequest(
+                "wrongPassword",
+                "newpassword");
         when(authService.getLoggedInUser()).thenReturn(user);
         when(authService.signIn(Mockito.any())).thenReturn(new JwtResponse());
 
@@ -91,8 +98,14 @@ public class UserServiceImplTest {
     public void UpdatePassword_PasswordIsUpdated() throws IOException {
         // hashed password is 123456789
         String oldPassword = "$2a$10$OK0pYmZHHCfxjSxQzVPx9eXUpVzUxOygHjEtCMrhPiqrng/nzC5Fq";
-        User user = User.builder().username("username").surname("surname").bio("bio").password(oldPassword).build();
-        ChangePasswordRequest request = new ChangePasswordRequest("123456789", "newpassword");
+        User user = User.builder()
+                .username("username")
+                .surname("surname")
+                .bio("bio")
+                .password(oldPassword).build();
+        ChangePasswordRequest request = new ChangePasswordRequest(
+                "123456789",
+                "newpassword");
         when(authService.getLoggedInUser()).thenReturn(user);
 
         userService.updatePassword(request);

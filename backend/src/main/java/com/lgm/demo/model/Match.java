@@ -25,7 +25,7 @@ public class Match implements Comparable<Match>{
     @JoinColumn(name="secondcompetitor_id", referencedColumnName="id")
     private Competitor secondCompetitor;
     // range when game should be played
-    // if there is exact time for game, both dates will be same
+    // if there is exact time for game, both dates will be same 
     private LocalDate startTime;
     private LocalDate endTime;
     private Integer round;
