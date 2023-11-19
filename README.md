@@ -4,13 +4,22 @@
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/RatkoSebez/LeagueMaker/.github%2Fworkflows%2Ftest-backend.yml?label=tests)
 [![codecov](https://codecov.io/github/RatkoSebez/LeagueMaker/graph/badge.svg?token=4iLJk3VdQR)](https://codecov.io/github/RatkoSebez/LeagueMaker)
 
+## About
 
-Project is in the development stage.
-
-League Maker is a web application that will help you create and manage leagues and tournaments. Currently there are 2 types of competitions available.
+League Maker is a web application designed to help users in both creating and managing competitions. Its user-friendly interface simplifies the setup and management of competitions, making the process easy and efficient. Currently there are 2 types of competitions available.
 
 1. Round Robin League
 2. Single Elimination Tournament
+
+Below are screenshots displaying several pages from the website.
+1. Home page
+![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/homepage.png "Home page")
+2. Tournament page
+![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/tournament.png "Tournament page")
+3. League page
+![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/league.png "League page")
+4. User profile page
+5. ![league maker](https://github.com/RatkoSebez/LeagueMaker/blob/main/frontend/src/assets/profile.png "Profile page")
 
 ## Usage
 
